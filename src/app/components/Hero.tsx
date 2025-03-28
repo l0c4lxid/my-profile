@@ -19,7 +19,7 @@ export default function Hero({ darkMode }: HeroProps) {
       </div>
 
       {/* Content container */}
-      <div className="container mx-auto px-6 relative z-10 -mt-10 sm:mt-4 pb-24 sm:pb-28">
+      <div className="container mx-auto px-6 relative z-10 -mt-20 sm:mt-4 pb-24 sm:pb-28">
         <div className="flex flex-col md:flex-row items-center">
           {/* Left column - Text content */}
           <div className="md:w-1/2 mb-10 md:mb-0">
