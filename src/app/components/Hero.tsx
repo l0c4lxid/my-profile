@@ -21,8 +21,25 @@ export default function Hero({ darkMode }: HeroProps) {
       {/* Content container */}
       <div className="container mx-auto px-6 relative z-10 -mt-20 sm:mt-4 pb-24 sm:pb-28">
         <div className="flex flex-col md:flex-row items-center">
+          {/* Right column - Profile image (Now above text on mobile) */}
+          <div className="md:w-1/2 flex justify-center mb-10 md:mb-0 order-1 md:order-2">
+            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full blur-2xl opacity-50 animate-pulse-slow"></div>
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
+                <Image
+                  src="/profile.jpg"
+                  alt="Syaid Andhika"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Left column - Text content */}
-          <div className="md:w-1/2 mb-10 md:mb-0">
+          <div className="md:w-1/2 mb-10 md:mb-0 order-2 md:order-1">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2">
               Hello,
             </h1>
@@ -36,30 +53,13 @@ export default function Hero({ darkMode }: HeroProps) {
               Passionate about creating innovative digital solutions and
               exploring the intersection of technology and business needs.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex justify-center space-x-4">
               <a href="#projects" className="btn-primary">
                 View My Work
               </a>
               <a href="#contact" className="btn-secondary">
                 Contact Me
               </a>
-            </div>
-          </div>
-
-          {/* Right column - Profile image */}
-          <div className="md:w-1/2 flex justify-center">
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full blur-2xl opacity-50 animate-pulse-slow"></div>
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white shadow-xl animate-float">
-                <Image
-                  src="/profile.jpg"
-                  alt="Syaid Andhika"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: "cover" }}
-                  priority
-                />
-              </div>
             </div>
           </div>
         </div>
