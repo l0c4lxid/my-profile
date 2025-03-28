@@ -1,3 +1,5 @@
+"use client"; // Menandai file ini sebagai komponen klien
+
 import { useState } from "react"; // Tambahkan import useState
 import Link from "next/link";
 import {
@@ -9,11 +11,14 @@ import {
   AcademicCapIcon,
   EnvelopeIcon,
   XMarkIcon,
+  SunIcon,
+  MoonIcon,
 } from "@heroicons/react/24/outline"; // Menggunakan ikon dari Heroicons
 
 // Definisikan tipe untuk props
 interface NavbarProps {
   darkMode: boolean;
+  toggleDarkMode: () => void; // Tambahkan fungsi untuk toggle dark mode
 }
 
 // Definisikan struktur menu item
@@ -23,7 +28,7 @@ interface MenuItem {
   icon: React.ReactNode;
 }
 
-export default function Navbar({ darkMode }: NavbarProps) {
+export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false); // State untuk mengelola visibilitas menu
 
   const handleMenuToggle = () => {
@@ -32,26 +37,26 @@ export default function Navbar({ darkMode }: NavbarProps) {
 
   // Array menu items dengan ikon
   const menuItems: MenuItem[] = [
-    { name: "Home", href: "#home", icon: <HomeIcon className="h-5 w-5" /> },
-    { name: "About", href: "#about", icon: <UserIcon className="h-5 w-5" /> },
+    { name: "Home", href: "home", icon: <HomeIcon className="h-5 w-5" /> },
+    { name: "About", href: "about", icon: <UserIcon className="h-5 w-5" /> },
     {
       name: "Skills",
-      href: "#skills",
+      href: "skills",
       icon: <CodeBracketIcon className="h-5 w-5" />,
     },
     {
       name: "Projects",
-      href: "#projects",
+      href: "projects",
       icon: <FolderIcon className="h-5 w-5" />,
     },
     {
       name: "Education",
-      href: "#education",
+      href: "education",
       icon: <AcademicCapIcon className="h-5 w-5" />,
     },
     {
       name: "Contact",
-      href: "#contact",
+      href: "contact",
       icon: <EnvelopeIcon className="h-5 w-5" />,
     },
   ];
@@ -63,10 +68,43 @@ export default function Navbar({ darkMode }: NavbarProps) {
       } py-4 px-6 sticky top-0 z-50 shadow-sm`}
     >
       <div className="container mx-auto flex justify-between items-center">
+        {/* Ikon Burger untuk Menu Mobile, sekarang di kiri */}
+        <button
+          onClick={handleMenuToggle}
+          className={`md:hidden focus:outline-none ${
+            darkMode ? "text-white" : "text-slate-800"
+          }`}
+        >
+          {menuOpen ? (
+            <XMarkIcon className="h-6 w-6" />
+          ) : (
+            <Bars3Icon className="h-6 w-6" />
+          )}
+        </button>
+
+        {/* Tautan ke Halaman Utama */}
         <Link href="/" className="text-2xl font-bold">
           <span className="font-mono text-indigo-600">./l0c4lxid</span>
         </Link>
 
+        {/* Tombol untuk Mode Gelap */}
+        <div className="flex items-center md:hidden">
+          <button
+            onClick={toggleDarkMode}
+            className={`flex items-center justify-center w-10 h-10 rounded-full transition duration-300 ${
+              darkMode ? "bg-gray-700" : "bg-gray-300"
+            } ml-2`} // Menambahkan margin left untuk pemisahan
+            aria-label="Toggle Dark Mode"
+          >
+            {darkMode ? (
+              <SunIcon className="h-5 w-5 text-yellow-500" />
+            ) : (
+              <MoonIcon className="h-5 w-5 text-gray-800" />
+            )}
+          </button>
+        </div>
+
+        {/* Menu Desktop */}
         <div className="hidden md:flex space-x-8">
           {menuItems.map((item) => (
             <Link
@@ -80,20 +118,6 @@ export default function Navbar({ darkMode }: NavbarProps) {
             </Link>
           ))}
         </div>
-
-        {/* Ikon Burger untuk Menu Mobile */}
-        <button
-          onClick={handleMenuToggle}
-          className={`md:hidden focus:outline-none ${
-            darkMode ? "text-white" : "text-slate-800"
-          }`}
-        >
-          {menuOpen ? (
-            <XMarkIcon className="h-6 w-6" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" />
-          )}
-        </button>
       </div>
 
       {/* Dropdown Menu untuk Mobile */}
