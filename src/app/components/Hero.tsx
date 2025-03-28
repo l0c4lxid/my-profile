@@ -23,10 +23,12 @@ export default function Hero({ darkMode }: HeroProps) {
         <div className="flex flex-col md:flex-row items-center">
           {/* Left column - Text content */}
           <div className="md:w-1/2 mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
-              Hello, I&apos;m{" "}
-              <span className="text-gradient">Syaid Andhika</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-1 sm:mb-2">
+              Hello,
             </h1>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+              I&apos;m <span className="text-gradient">Syaid Andhika</span>
+            </h2>
             <h2 className="text-xl md:text-2xl lg:text-3xl mb-4 sm:mb-6">
               Information Systems Student
             </h2>
@@ -63,7 +65,7 @@ export default function Hero({ darkMode }: HeroProps) {
         </div>
       </div>
 
-      {/* Creative animated scroll indicator - digeser ke atas */}
+      {/* Creative animated scroll indicator */}
       <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 z-20 w-8 sm:w-10">
         <a
           href="#about"
@@ -136,7 +138,7 @@ export default function Hero({ darkMode }: HeroProps) {
         </a>
       </div>
 
-      {/* Vertical line to enhance the scroll indicator - digeser ke atas */}
+      {/* Vertical line to enhance the scroll indicator */}
       <div
         className={`absolute h-16 w-px bottom-32 sm:bottom-36 left-1/2 transform -translate-x-1/2 ${
           darkMode
