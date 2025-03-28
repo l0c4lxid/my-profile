@@ -1,7 +1,5 @@
 "use client"; // Menandai file ini sebagai komponen klien
 
-import { useState } from "react"; // Tambahkan import useState
-import Link from "next/link";
 import {
   Bars3Icon,
   HomeIcon,
@@ -18,7 +16,7 @@ import {
 // Definisikan tipe untuk props
 interface NavbarProps {
   darkMode: boolean;
-  toggleDarkMode: () => void; // Tambahkan fungsi untuk toggle dark mode
+  toggleDarkMode: () => void;
 }
 
 // Definisikan struktur menu item
@@ -29,37 +27,70 @@ interface MenuItem {
 }
 
 export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
-  const [menuOpen, setMenuOpen] = useState(false); // State untuk mengelola visibilitas menu
-
-  const handleMenuToggle = () => {
-    setMenuOpen((prev) => !prev);
-  };
-
-  // Array menu items dengan ikon
+  // Array menu items dengan ikon dan anchor links untuk single page
   const menuItems: MenuItem[] = [
-    { name: "Home", href: "home", icon: <HomeIcon className="h-5 w-5" /> },
-    { name: "About", href: "about", icon: <UserIcon className="h-5 w-5" /> },
+    { name: "Home", href: "#home", icon: <HomeIcon className="h-5 w-5" /> },
+    { name: "About", href: "#about", icon: <UserIcon className="h-5 w-5" /> },
     {
       name: "Skills",
-      href: "skills",
+      href: "#skills",
       icon: <CodeBracketIcon className="h-5 w-5" />,
     },
     {
       name: "Projects",
-      href: "projects",
+      href: "#projects",
       icon: <FolderIcon className="h-5 w-5" />,
     },
     {
       name: "Education",
-      href: "education",
+      href: "#education",
       icon: <AcademicCapIcon className="h-5 w-5" />,
     },
     {
       name: "Contact",
-      href: "contact",
+      href: "#contact",
       icon: <EnvelopeIcon className="h-5 w-5" />,
     },
   ];
+
+  // Function to handle smooth scrolling for anchor links
+  const handleScrollToSection = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Close mobile menu if it's open (using DOM instead of state)
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (mobileMenu) {
+      mobileMenu.classList.add("hidden");
+    }
+
+    // Toggle burger icon
+    const burgerIcon = document.getElementById("burger-icon");
+    const closeIcon = document.getElementById("close-icon");
+    if (burgerIcon && closeIcon) {
+      burgerIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+    }
+  };
+
+  // Toggle mobile menu without useState
+  const toggleMobileMenu = () => {
+    const mobileMenu = document.getElementById("mobile-menu");
+    const burgerIcon = document.getElementById("burger-icon");
+    const closeIcon = document.getElementById("close-icon");
+
+    if (mobileMenu && burgerIcon && closeIcon) {
+      mobileMenu.classList.toggle("hidden");
+      burgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    }
+  };
 
   return (
     <nav
@@ -70,35 +101,33 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
       <div className="container mx-auto flex items-center justify-between md:justify-start">
         {/* Ikon Burger untuk Menu Mobile */}
         <button
-          onClick={handleMenuToggle}
+          onClick={toggleMobileMenu}
           className={`md:hidden focus:outline-none ${
             darkMode ? "text-white" : "text-slate-800"
           }`}
         >
-          {menuOpen ? (
-            <XMarkIcon className="h-6 w-6" />
-          ) : (
-            <Bars3Icon className="h-6 w-6" />
-          )}
+          <Bars3Icon id="burger-icon" className="h-6 w-6" />
+          <XMarkIcon id="close-icon" className="h-6 w-6 hidden" />
         </button>
 
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold mx-auto md:mx-0 md:mr-8">
+        <a href="#home" className="text-2xl font-bold mx-auto md:mx-0 md:mr-8">
           <span className="font-mono text-indigo-600">./l0c4lxid</span>
-        </Link>
+        </a>
 
         {/* Menu Desktop - Centered */}
         <div className="hidden md:flex flex-grow justify-center space-x-8">
           {menuItems.map((item) => (
-            <Link
+            <a
               key={item.name}
               href={item.href}
+              onClick={(e) => handleScrollToSection(e, item.href)}
               className="font-medium relative transition duration-300 ease-in-out hover:text-indigo-600 flex items-center"
             >
               <span className="mr-1">{item.icon}</span>
               {item.name}
               <span className="absolute block h-1 bg-indigo-600 transition-all duration-300 transform scale-x-0 hover:scale-x-100 bottom-0 left-0 right-0"></span>
-            </Link>
+            </a>
           ))}
         </div>
 
@@ -118,29 +147,28 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
         </button>
       </div>
 
-      {/* Dropdown Menu untuk Mobile */}
-      {menuOpen && (
-        <div
-          className={`md:hidden ${
-            darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-          } py-4 px-6 absolute left-0 right-0 shadow-md`}
-        >
-          <ul className="space-y-4">
-            {menuItems.map((item) => (
-              <li key={item.name}>
-                <Link
-                  href={item.href}
-                  className="font-medium flex items-center hover:text-indigo-600 transition py-2"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  <span className="mr-3">{item.icon}</span>
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      {/* Dropdown Menu untuk Mobile - Hidden by default */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden ${
+          darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
+        } py-4 px-6 absolute left-0 right-0 shadow-md hidden`}
+      >
+        <ul className="space-y-4">
+          {menuItems.map((item) => (
+            <li key={item.name}>
+              <a
+                href={item.href}
+                onClick={(e) => handleScrollToSection(e, item.href)}
+                className="font-medium flex items-center hover:text-indigo-600 transition py-2"
+              >
+                <span className="mr-3">{item.icon}</span>
+                {item.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </nav>
   );
 }
