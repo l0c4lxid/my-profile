@@ -66,7 +66,7 @@ export default function Hero({ darkMode }: HeroProps) {
       </div>
 
       {/* Creative animated scroll indicator */}
-      <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 z-20 w-8 sm:w-10">
+      <div className="absolute bottom-16 -mt-10 sm:bottom-20 left-1/2 transform -translate-x-1/2 z-20 w-8 sm:w-10">
         <a
           href="#about"
           className="group flex flex-col items-center"
