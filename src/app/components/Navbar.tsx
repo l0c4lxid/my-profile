@@ -67,8 +67,8 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
         darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
       } py-4 px-6 sticky top-0 z-50 shadow-sm`}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        {/* Ikon Burger untuk Menu Mobile, sekarang di kiri */}
+      <div className="container mx-auto flex items-center justify-between md:justify-start">
+        {/* Ikon Burger untuk Menu Mobile */}
         <button
           onClick={handleMenuToggle}
           className={`md:hidden focus:outline-none ${
@@ -82,30 +82,13 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
           )}
         </button>
 
-        {/* Tautan ke Halaman Utama */}
-        <Link href="/" className="text-2xl font-bold">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold mx-auto md:mx-0 md:mr-8">
           <span className="font-mono text-indigo-600">./l0c4lxid</span>
         </Link>
 
-        {/* Tombol untuk Mode Gelap */}
-        <div className="flex items-center md:hidden">
-          <button
-            onClick={toggleDarkMode}
-            className={`flex items-center justify-center w-10 h-10 rounded-full transition duration-300 ${
-              darkMode ? "bg-gray-700" : "bg-gray-300"
-            } ml-2`} // Menambahkan margin left untuk pemisahan
-            aria-label="Toggle Dark Mode"
-          >
-            {darkMode ? (
-              <SunIcon className="h-5 w-5 text-yellow-500" />
-            ) : (
-              <MoonIcon className="h-5 w-5 text-gray-800" />
-            )}
-          </button>
-        </div>
-
-        {/* Menu Desktop */}
-        <div className="hidden md:flex space-x-8">
+        {/* Menu Desktop - Centered */}
+        <div className="hidden md:flex flex-grow justify-center space-x-8">
           {menuItems.map((item) => (
             <Link
               key={item.name}
@@ -118,6 +101,21 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
             </Link>
           ))}
         </div>
+
+        {/* Dark Mode Toggle - Desktop & Mobile */}
+        <button
+          onClick={toggleDarkMode}
+          className={`flex items-center justify-center w-10 h-10 rounded-full transition duration-300 ${
+            darkMode ? "bg-gray-700" : "bg-gray-300"
+          }`}
+          aria-label="Toggle Dark Mode"
+        >
+          {darkMode ? (
+            <SunIcon className="h-5 w-5 text-yellow-500" />
+          ) : (
+            <MoonIcon className="h-5 w-5 text-gray-800" />
+          )}
+        </button>
       </div>
 
       {/* Dropdown Menu untuk Mobile */}
