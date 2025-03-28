@@ -9,7 +9,7 @@ import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-
+import ScrollToTop from "./components/ScrollToTop";
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -44,6 +44,7 @@ export default function Home() {
       <Education darkMode={darkMode} />
       <Contact darkMode={darkMode} />
       <Footer darkMode={darkMode} />
+      <ScrollToTop />
     </main>
   );
 }
