@@ -14,9 +14,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Syaid Andhika | Portfolio - Information Systems Student",
   description:
-    "Official portfolio website of Syaid Andhika, an Information Systems student from [lokasi Anda] passionate about technology and innovation.",
+    "Official portfolio website of Syaid Andhika, an Information Systems student from Bantul, D.I Yogyakarta passionate about technology and innovation.",
   keywords:
-    "Syaid Andhika, portfolio, information systems, student, technology, [tambahkan kata kunci lain yang relevan]",
+    "Syaid Andhika, portfolio, information systems, student, technology, syaid, andhika, resume, sistem informasi",
 };
 
 export default function RootLayout({
