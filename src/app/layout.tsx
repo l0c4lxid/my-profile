@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import SchemaMarkup from "./components/SchemaMarkup";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
@@ -11,9 +12,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Syaid Andhika | Information Systems Student",
+  title: "Syaid Andhika | Portfolio - Information Systems Student",
   description:
-    "Personal portfolio website of Syaid Andhika, an Information Systems student passionate about technology and innovation.",
+    "Official portfolio website of Syaid Andhika, an Information Systems student from [lokasi Anda] passionate about technology and innovation.",
+  keywords:
+    "Syaid Andhika, portfolio, information systems, student, technology, [tambahkan kata kunci lain yang relevan]",
 };
 
 export default function RootLayout({
@@ -23,6 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <SchemaMarkup />
       <body className={`${poppins.variable} font-sans`}>
         {children}
         <Analytics />
