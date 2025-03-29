@@ -297,7 +297,7 @@ export default function Education({ darkMode }: EducationProps) {
                           darkMode ? "text-indigo-400" : "text-indigo-600"
                         } transition-all duration-300 hover:translate-x-1`}
                       >
-                        High School Diploma (MIPA)
+                        Senior Highschool (MIPA)
                       </h3>
                       <div className="flex items-center mb-2 group">
                         <MapPinIcon
