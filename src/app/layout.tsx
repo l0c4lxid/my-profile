@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description:
     "Official portfolio website of Syaid Andhika, an Information Systems student from Bantul, D.I Yogyakarta passionate about technology and innovation.",
   keywords:
-    "Syaid Andhika, portfolio, information systems, student, technology, syaid, andhika, resume, sistem informasi",
+    "Syaid Andhika, portfolio, information systems, student, technology, syaid, andhika, resume, sistem informasi, syaidandhika, andhikasyaid",
 };
 
 export default function RootLayout({
