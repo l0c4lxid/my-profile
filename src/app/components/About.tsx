@@ -138,9 +138,9 @@ export default function About({ darkMode }: AboutProps) {
 
             {/* Download CV button with animation */}
             <a
-              href="/resume/SyaidAndhika-resume.pdf"
+              href="/api/download-resume" // <--- Tetap mengarah ke API Route
               className="btn-primary mt-8 inline-flex items-center group transition-all duration-300 hover:scale-105"
-              download
+              download="SyaidAndhika-resume.pdf" // Atribut download masih bisa membantu, tapi header server lebih utama
             >
               My Resume
               <svg
