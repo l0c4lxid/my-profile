@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Syaid Andhika - Personal Portfolio Website
 
-## Getting Started
+A personal portfolio website showcasing my skills, projects, education, and contact information. Built with Next.js and Tailwind CSS, designed to be responsive and highlight my journey as an Information Systems Student.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Explore the live version of the portfolio:
+[https://www.syaidandhika.my.id/](https://www.syaidandhika.my.id/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This portfolio website includes the following sections:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Home:** A brief introduction and call-to-actions.
+- **About:** Detailed information about myself, my background, interests, and a link to download my resume.
+- **Skills:** A visual representation of my technical skills across various domains like Web Development (Frontend, Backend, Database), Cloud Computing, Mobile Development, Data Analysis, and System Architecture, including specific technologies and proficiency levels.
+- **Projects:** A showcase of selected projects with descriptions, technologies used, and links to view the project live and on GitHub.
+- **Education:** A timeline of my academic background and achievements.
+- **Contact:** Ways to get in touch, including contact information and a message form.
 
-## Learn More
+## 💻 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+Follow these steps to set up the project locally:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    ```bash
+    git clone https://github.com/l0c4lxid/my-profile.git
+    cd my-profile
+    ```
 
-## Deploy on Vercel
+2.  **Install dependencies:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```bash
+    npm install
+    # atau
+    yarn install
+    # atau
+    pnpm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+3.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    # atau
+    yarn dev
+    # atau
+    pnpm dev
+    ```
+
+4.  **Open in your browser:**
+
+    Open [http://localhost:3000](http://localhost:3000) to see the result.
+
+## ✉️ Contact
+
+Feel free to reach out!
+
+- **Email:** syaidxandhika@gmail.com
+- **LinkedIn:** [Link ke LinkedIn Anda](https://linkedin.com/in/syaidandhika)
+- **GitHub:** [https://github.com/l0c4lxid](https://github.com/l0c4lxid)
+
+---
+
+Made with ❤️ using Next.js and Tailwind CSS.
+© 2025 Syaid Andhika. All rights reserved.
