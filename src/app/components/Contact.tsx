@@ -135,13 +135,14 @@ export default function Contact({ darkMode }: ContactProps) {
                 </h4>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/syaid-andhika-24831b2bb/"
                     className={`${
                       darkMode
                         ? "bg-gray-700 hover:bg-gray-600"
                         : "bg-indigo-100 hover:bg-indigo-200"
                     } p-3 rounded-full transition-all duration-300 hover:scale-110`}
                     aria-label="LinkedIn"
+                    target="_blank"
                   >
                     <svg
                       className={`h-6 w-6 ${
@@ -154,13 +155,14 @@ export default function Contact({ darkMode }: ContactProps) {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://github.com/l0c4lxid"
                     className={`${
                       darkMode
                         ? "bg-gray-700 hover:bg-gray-600"
                         : "bg-indigo-100 hover:bg-indigo-200"
                     } p-3 rounded-full transition-all duration-300 hover:scale-110`}
                     aria-label="GitHub"
+                    target="_blank"
                   >
                     <svg
                       className={`h-6 w-6 ${

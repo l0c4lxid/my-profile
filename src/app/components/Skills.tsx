@@ -265,12 +265,6 @@ export default function Skills({ darkMode }: SkillsProps) {
                 color="green"
                 delay={0.2}
               />
-              <SkillProgress
-                skill="Swift"
-                percentage={60}
-                color="green"
-                delay={0.3}
-              />
             </div>
           </motion.div>
 
@@ -324,13 +318,7 @@ export default function Skills({ darkMode }: SkillsProps) {
                 delay={0.1}
               />
               <SkillProgress
-                skill="R"
-                percentage={65}
-                color="red"
-                delay={0.2}
-              />
-              <SkillProgress
-                skill="Tableau"
+                skill="Power BI"
                 percentage={70}
                 color="red"
                 delay={0.3}
@@ -368,12 +356,6 @@ export default function Skills({ darkMode }: SkillsProps) {
               applications.
             </p>
             <div className="space-y-3">
-              <SkillProgress
-                skill="Microservices"
-                percentage={75}
-                color="amber"
-                delay={0.1}
-              />
               <SkillProgress
                 skill="API Design"
                 percentage={85}
