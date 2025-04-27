@@ -138,7 +138,7 @@ export default function About({ darkMode }: AboutProps) {
 
             {/* Download CV button with animation */}
             <a
-              href="/resume.pdf"
+              href="/resume/SyaidAndhika-resume.pdf"
               className="btn-primary mt-8 inline-flex items-center group transition-all duration-300 hover:scale-105"
               download
             >
