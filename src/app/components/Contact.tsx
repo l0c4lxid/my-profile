@@ -13,6 +13,9 @@ interface ContactProps {
   darkMode: boolean;
 }
 
+// Ambil Access Key dari environment variable
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+
 export default function Contact({ darkMode }: ContactProps) {
   const [formState, setFormState] = useState({
     name: "",
@@ -21,25 +24,88 @@ export default function Contact({ darkMode }: ContactProps) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
+    // Reset status message when user starts typing again
+    setSubmitStatus("idle");
+    setStatusMessage("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission
 
-    // Simulate form submission
-    setTimeout(() => {
-      console.log("Form submitted:", formState);
+    // Validasi sederhana sebelum mengirim
+    if (!formState.name || !formState.email || !formState.message) {
+      setSubmitStatus("error");
+      setStatusMessage("Please fill in all fields.");
+      return;
+    }
+
+    // Validasi Access Key
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setSubmitStatus("error");
+      setStatusMessage(
+        "Form not configured. Please check environment variables."
+      );
+      console.error("WEB3FORMS_ACCESS_KEY is not set!");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setStatusMessage("");
+
+    // Siapkan data yang akan dikirim ke Web3Forms
+    // Access Key harus disertakan dalam data
+    const formData = new FormData();
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+    formData.append("name", formState.name);
+    formData.append("email", formState.email);
+    formData.append("message", formState.message);
+
+    // Opsional: Redirect URL setelah sukses (lihat dokumentasi Web3Forms)
+    // formData.append("redirect", "https://yourwebsite.com/thank-you");
+
+    try {
+      // Kirim data ke endpoint Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        // Web3Forms menerima FormData atau JSON, FormData lebih umum untuk form POST
+        // headers: {
+        //   'Content-Type': 'application/json', // Uncomment if sending JSON
+        // },
+        body: formData, // Use formData for standard form submission
+        // body: JSON.stringify({...formState, access_key: WEB3FORMS_ACCESS_KEY}), // Use this if sending JSON
+      });
+
+      const data = await response.json(); // Web3Forms selalu mengembalikan JSON
+
+      // Cek respon dari Web3Forms
+      if (data.success) {
+        setSubmitStatus("success");
+        setStatusMessage(data.message || "Message sent successfully!");
+        setFormState({ name: "", email: "", message: "" }); // Clear the form on success
+      } else {
+        setSubmitStatus("error");
+        setStatusMessage(data.message || "Failed to send message.");
+        console.error("Web3Forms Error:", data.message); // Log the actual error
+      }
+    } catch (error) {
+      // Handle network errors or other exceptions
+      setSubmitStatus("error");
+      setStatusMessage("An unexpected error occurred.");
+      console.error("Fetch error:", error);
+    } finally {
       setIsSubmitting(false);
-      setFormState({ name: "", email: "", message: "" });
-      alert("Thanks for your message! I'll get back to you soon.");
-    }, 1500);
+    }
   };
 
   return (
@@ -57,7 +123,7 @@ export default function Contact({ darkMode }: ContactProps) {
 
         <div className="mt-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Contact Information */}
+            {/* Contact Information - (No changes needed here) */}
             <div className="transform transition-all duration-500 hover:translate-y-[-10px]">
               <h3
                 className={`text-xl font-bold mb-4 ${
@@ -124,7 +190,7 @@ export default function Contact({ darkMode }: ContactProps) {
                 </li>
               </ul>
 
-              {/* Social Media Links */}
+              {/* Social Media Links - (No changes needed here) */}
               <div className="mt-8">
                 <h4
                   className={`text-lg font-semibold mb-4 ${
@@ -143,6 +209,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     } p-3 rounded-full transition-all duration-300 hover:scale-110`}
                     aria-label="LinkedIn"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg
                       className={`h-6 w-6 ${
@@ -163,6 +230,7 @@ export default function Contact({ darkMode }: ContactProps) {
                     } p-3 rounded-full transition-all duration-300 hover:scale-110`}
                     aria-label="GitHub"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg
                       className={`h-6 w-6 ${
@@ -178,25 +246,20 @@ export default function Contact({ darkMode }: ContactProps) {
                       />
                     </svg>
                   </a>
+                  {/* Remove Twitter link or update href */}
+                  {/*
                   <a
-                    href="#"
+                    href="#" // Update this href to your Twitter profile
                     className={`${
                       darkMode
                         ? "bg-gray-700 hover:bg-gray-600"
                         : "bg-indigo-100 hover:bg-indigo-200"
                     } p-3 rounded-full transition-all duration-300 hover:scale-110`}
                     aria-label="Twitter"
-                  >
-                    <svg
-                      className={`h-6 w-6 ${
-                        darkMode ? "text-indigo-400" : "text-indigo-600"
-                      }`}
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.1 10.1 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                    </svg>
-                  </a>
+                   >
+                    <svg ... >...</svg>
+                   </a>
+                   */}
                 </div>
               </div>
             </div>
@@ -216,6 +279,7 @@ export default function Contact({ darkMode }: ContactProps) {
                 Send Me a Message
               </h3>
               <form onSubmit={handleSubmit}>
+                {/* Input fields remain the same */}
                 <div className="mb-4 relative group">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <UserIcon
@@ -262,7 +326,7 @@ export default function Contact({ darkMode }: ContactProps) {
                 </div>
                 <div className="mb-4 relative group">
                   <div className="absolute top-3 left-0 pl-3 flex items-start pointer-events-none">
-                    <ChatBubbleLeftRightIcon
+                    <ChatBubbleLeftRightIcon // Using ChatBubble for textarea icon
                       className={`h-5 w-5 ${
                         darkMode ? "text-gray-500" : "text-gray-400"
                       } group-focus-within:text-indigo-500 transition-colors duration-200`}
@@ -281,6 +345,27 @@ export default function Contact({ darkMode }: ContactProps) {
                     required
                   ></textarea>
                 </div>
+
+                {/* Display submission status message */}
+                {submitStatus !== "idle" && (
+                  <p
+                    className={`mb-4 text-center ${
+                      submitStatus === "success"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    } ${
+                      darkMode && submitStatus === "success"
+                        ? "text-green-400"
+                        : ""
+                    } ${
+                      darkMode && submitStatus === "error" ? "text-red-400" : ""
+                    }`}
+                  >
+                    {statusMessage}
+                  </p>
+                )}
+
+                {/* Submit button */}
                 <button
                   type="submit"
                   className={`btn-primary w-full flex items-center justify-center transition-all duration-300 ${
@@ -288,7 +373,7 @@ export default function Contact({ darkMode }: ContactProps) {
                       ? "opacity-70 cursor-not-allowed"
                       : "hover:scale-[1.02]"
                   }`}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !WEB3FORMS_ACCESS_KEY} // Disable if submitting or key is missing
                 >
                   {isSubmitting ? (
                     <svg
@@ -316,6 +401,12 @@ export default function Contact({ darkMode }: ContactProps) {
                   )}
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
+                {!WEB3FORMS_ACCESS_KEY && (
+                  <p className="text-center text-red-500 text-sm mt-2">
+                    Form is not configured. Please set
+                    NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.
+                  </p>
+                )}
               </form>
             </div>
           </div>
