@@ -53,14 +53,6 @@ Follow these steps to set up the project locally:
 
     Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-## ✉️ Contact
-
-Feel free to reach out!
-
-- **Email:** syaidxandhika@gmail.com
-- **LinkedIn:** [Link ke LinkedIn Anda](https://linkedin.com/in/syaidandhika)
-- **GitHub:** [https://github.com/l0c4lxid](https://github.com/l0c4lxid)
-
 ---
 
 Made with ❤️ using Next.js and Tailwind CSS.
