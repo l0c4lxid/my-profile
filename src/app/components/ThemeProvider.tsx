@@ -36,7 +36,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", theme === "dark");
-    root.dataset.theme = theme;
+    root.dataset.theme = theme === "dark" ? "dark" : "corporate";
     root.style.colorScheme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);

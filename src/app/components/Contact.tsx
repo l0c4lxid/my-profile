@@ -92,12 +92,12 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-400">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
             Contact
           </p>
-          <h2 className="section-title mt-3">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
             Let&apos;s build something
-            <span className="gradient-text"> vibrant</span>
+            <span className="text-primary"> vibrant</span>
           </h2>
         </motion.div>
 
@@ -107,31 +107,31 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="glass-card rounded-[28px] p-6"
+            className="card rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg"
           >
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-base-content">
               Contact Details
             </h3>
-            <p className="mt-3 text-sm font-medium text-slate-800 dark:text-slate-300">
+            <p className="mt-3 text-sm font-medium text-base-content/80">
               Reach out for collaborations, freelance work, or just to say hi.
             </p>
             <div className="mt-6 space-y-4 text-sm">
-              <div className="flex items-center gap-3 font-medium text-slate-800 dark:text-slate-300">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-400/30 via-cyan-400/20 to-pink-400/30 text-indigo-500 dark:text-cyan-200">
+              <div className="flex items-center gap-3 font-medium text-base-content/80">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <EnvelopeIcon className="h-5 w-5" />
                 </span>
                 <a href="mailto:syaidxandhika@gmail.com">
                   syaidxandhika@gmail.com
                 </a>
               </div>
-              <div className="flex items-center gap-3 font-medium text-slate-800 dark:text-slate-300">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-400/30 via-cyan-400/20 to-pink-400/30 text-indigo-500 dark:text-cyan-200">
+              <div className="flex items-center gap-3 font-medium text-base-content/80">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <PhoneIcon className="h-5 w-5" />
                 </span>
                 <span>+62 896 0776 5169</span>
               </div>
-              <div className="flex items-center gap-3 font-medium text-slate-800 dark:text-slate-300">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-400/30 via-cyan-400/20 to-pink-400/30 text-indigo-500 dark:text-cyan-200">
+              <div className="flex items-center gap-3 font-medium text-base-content/80">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <MapPinIcon className="h-5 w-5" />
                 </span>
                 <span>Yogyakarta, Indonesia</span>
@@ -142,7 +142,7 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/syaid-andhika-24831b2bb/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary"
+                className="btn btn-outline normal-case"
               >
                 LinkedIn
               </a>
@@ -150,7 +150,7 @@ export default function Contact() {
                 href="https://github.com/l0c4lxid"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-secondary"
+                className="btn btn-outline normal-case"
               >
                 GitHub
               </a>
@@ -162,16 +162,16 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="glass-card rounded-[28px] p-6"
+            className="card rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg"
           >
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-base-content">
               Send a Message
             </h3>
             <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
                 <label
                   htmlFor="contact-name"
-                  className="text-sm font-semibold text-slate-800 dark:text-slate-300"
+                  className="text-sm font-semibold text-base-content/80"
                 >
                   Full Name
                 </label>
@@ -182,14 +182,14 @@ export default function Contact() {
                   value={formState.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
               </div>
               <div className="space-y-2">
                 <label
                   htmlFor="contact-email"
-                  className="text-sm font-semibold text-slate-800 dark:text-slate-300"
+                  className="text-sm font-semibold text-base-content/80"
                 >
                   Email Address
                 </label>
@@ -200,14 +200,14 @@ export default function Contact() {
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="Email address"
-                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
               </div>
               <div className="space-y-2">
                 <label
                   htmlFor="contact-message"
-                  className="text-sm font-semibold text-slate-800 dark:text-slate-300"
+                  className="text-sm font-semibold text-base-content/80"
                 >
                   Message
                 </label>
@@ -217,7 +217,7 @@ export default function Contact() {
                   value={formState.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project"
-                  className="h-32 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+                  className="textarea textarea-bordered h-32 w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
               </div>
@@ -229,12 +229,12 @@ export default function Contact() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -6 }}
-                    className={`rounded-2xl px-4 py-3 text-sm font-medium ${
+                    className={`alert rounded-2xl text-sm font-medium ${
                       status === "success"
-                        ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                        ? "alert-success"
                         : status === "error"
-                          ? "bg-rose-500/10 text-rose-500"
-                          : "bg-indigo-500/10 text-indigo-500"
+                          ? "alert-error"
+                          : "alert-info"
                     }`}
                     role="status"
                   >
@@ -246,13 +246,13 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
-                className="btn-primary w-full justify-center"
+                className="btn btn-primary normal-case w-full justify-center shadow-lg"
               >
                 {status === "loading" ? "Sending..." : "Send Message"}
                 <PaperAirplaneIcon className="ml-2 h-4 w-4" />
               </button>
               {!WEB3FORMS_ACCESS_KEY && (
-                <p className="text-xs text-rose-500">
+                <p className="text-xs text-error">
                   Form is not configured. Please set
                   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.
                 </p>

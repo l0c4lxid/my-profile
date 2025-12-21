@@ -52,14 +52,14 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-4 left-0 right-0 z-50 px-4">
-      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-slate-200/80 bg-white/95 px-5 py-3 shadow-xl shadow-indigo-500/15 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60">
+      <div className="navbar mx-auto flex max-w-6xl items-center justify-between rounded-full border border-base-300 bg-base-100 px-5 py-3 shadow-lg backdrop-blur">
         <button
           type="button"
           className="text-lg font-semibold tracking-tight"
           onClick={() => handleNavClick("home")}
           aria-label="Scroll to top"
         >
-          <span className="logo-gradient text-xl font-semibold">
+          <span className="text-xl font-semibold text-primary">
             ./l0c4lxid
           </span>
         </button>
@@ -70,17 +70,15 @@ export default function Navbar() {
               type="button"
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`relative rounded-full px-4 py-2 text-sm font-semibold transition ${
-                activeSection === item.id
-                  ? "text-slate-900 dark:text-white"
-                  : "text-slate-700 dark:text-slate-200"
+              className={`btn btn-ghost btn-sm normal-case relative ${
+                activeSection === item.id ? "btn-active" : ""
               }`}
               aria-current={activeSection === item.id ? "page" : undefined}
             >
               {activeSection === item.id && (
                 <motion.span
                   layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/30 via-cyan-400/30 to-pink-500/30 shadow-sm"
+                  className="absolute inset-0 rounded-full bg-primary/20 shadow-sm"
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 />
               )}
@@ -93,7 +91,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/80 bg-white/85 text-slate-700 shadow-lg shadow-indigo-500/10 transition dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+            className="btn btn-ghost btn-circle border border-base-300 shadow-md"
             aria-label="Toggle theme"
           >
             <AnimatePresence mode="wait">
@@ -105,9 +103,9 @@ export default function Navbar() {
                 transition={{ duration: 0.2 }}
               >
                 {theme === "dark" ? (
-                  <SunIcon className="h-5 w-5 text-amber-300" />
+                  <SunIcon className="h-5 w-5 text-warning" />
                 ) : (
-                  <MoonIcon className="h-5 w-5 text-indigo-500" />
+                  <MoonIcon className="h-5 w-5 text-primary" />
                 )}
               </motion.span>
             </AnimatePresence>
@@ -115,7 +113,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-slate-200/80 bg-white/85 text-slate-700 shadow-lg shadow-indigo-500/10 transition dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 md:hidden"
+            className="btn btn-ghost btn-circle border border-base-300 shadow-md md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
@@ -146,7 +144,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="mx-auto mt-3 max-w-6xl rounded-3xl border border-slate-200/70 bg-white/90 p-4 shadow-xl shadow-indigo-500/10 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70 md:hidden"
+            className="mx-auto mt-3 max-w-6xl rounded-3xl border border-base-300 bg-base-100 p-4 shadow-lg backdrop-blur md:hidden"
           >
             <div className="grid gap-2">
               {navItems.map((item) => (
@@ -154,11 +152,13 @@ export default function Navbar() {
                   type="button"
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className="flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-white/80 dark:text-slate-200 dark:hover:bg-slate-800/70"
+                  className={`btn btn-ghost btn-sm normal-case w-full justify-between ${
+                    activeSection === item.id ? "btn-active" : ""
+                  }`}
                 >
                   <span>{item.label}</span>
                   <span
-                    className={`h-2.5 w-2.5 rounded-full bg-gradient-to-br from-indigo-400 to-cyan-400 transition-opacity ${
+                    className={`h-2.5 w-2.5 rounded-full bg-primary transition-opacity ${
                       activeSection === item.id ? "opacity-100" : "opacity-20"
                     }`}
                   />

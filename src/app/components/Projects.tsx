@@ -48,11 +48,11 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-400">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
             Projects
           </p>
-          <h2 className="section-title mt-3">
-            Featured <span className="gradient-text">work highlights</span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
+            Featured <span className="text-primary">work highlights</span>
           </h2>
         </motion.div>
 
@@ -65,7 +65,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -6 }}
-              className="glass-card group flex h-full flex-col overflow-hidden rounded-[28px]"
+              className="card group flex h-full flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-100 shadow-lg"
             >
               <div className="relative h-52 overflow-hidden">
                 <Image
@@ -75,14 +75,14 @@ export default function Projects() {
                   sizes="(max-width: 1024px) 100vw, 33vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-slate-900/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-base-200/40" />
               </div>
               <div className="flex flex-1 flex-col gap-4 p-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-base-content">
                     {project.title}
                   </h3>
-                  <p className="mt-2 text-sm font-medium text-slate-800 dark:text-slate-300">
+                  <p className="mt-2 text-sm font-medium text-base-content/80">
                     {project.description}
                   </p>
                 </div>
@@ -90,7 +90,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-slate-200/80 bg-slate-100/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-300"
+                      className="badge badge-outline px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80"
                     >
                       {tag}
                     </span>
@@ -101,7 +101,7 @@ export default function Projects() {
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-primary w-full justify-center"
+                    className="btn btn-primary normal-case w-full justify-center shadow-lg"
                     aria-label={`Live demo of ${project.title}`}
                   >
                     Live Demo
@@ -111,7 +111,7 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn-secondary w-full justify-center"
+                    className="btn btn-secondary normal-case w-full justify-center shadow-lg"
                     aria-label={`GitHub repository for ${project.title}`}
                   >
                     GitHub

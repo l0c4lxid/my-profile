@@ -46,16 +46,16 @@ export default function Education() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-400">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
             Education
           </p>
-          <h2 className="section-title mt-3">
-            Learning with <span className="gradient-text">purpose</span>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
+            Learning with <span className="text-primary">purpose</span>
           </h2>
         </motion.div>
 
         <div className="relative grid gap-8">
-          <div className="absolute left-5 top-0 h-full w-1 rounded-full bg-gradient-to-b from-indigo-400 via-cyan-300 to-pink-400 opacity-70 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-5 top-0 h-full w-1 rounded-full bg-base-300 md:left-1/2 md:-translate-x-1/2" />
 
           {educationItems.map((item, index) => (
             <motion.div
@@ -70,32 +70,32 @@ export default function Education() {
                   : "md:justify-end md:pl-10"
               }`}
             >
-              <div className="absolute left-2 top-6 h-6 w-6 rounded-full bg-gradient-to-br from-indigo-400 to-pink-400 shadow-lg shadow-pink-400/40 md:left-1/2 md:-translate-x-1/2" />
-              <div className="glass-card ml-10 rounded-[28px] p-6 md:ml-0 md:w-[46%]">
+              <div className="absolute left-2 top-6 h-6 w-6 rounded-full bg-primary shadow-lg md:left-1/2 md:-translate-x-1/2" />
+              <div className="card ml-10 rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg md:ml-0 md:w-[46%]">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-400/30 via-cyan-300/20 to-pink-400/30 text-indigo-500 dark:text-cyan-200">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <AcademicCapIcon className="h-6 w-6" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                    <h3 className="text-lg font-semibold text-base-content">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-base-content/60">
                       {item.year}
                     </p>
                   </div>
                 </div>
-                <div className="mt-4 space-y-2 text-sm font-medium text-slate-800 dark:text-slate-300">
+                <div className="mt-4 space-y-2 text-sm font-medium text-base-content/80">
                   <div className="flex items-center gap-2">
-                    <BuildingLibraryIcon className="h-4 w-4 text-indigo-400" />
+                    <BuildingLibraryIcon className="h-4 w-4 text-primary" />
                     <span>{item.institution}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CalendarDaysIcon className="h-4 w-4 text-pink-400" />
+                    <CalendarDaysIcon className="h-4 w-4 text-secondary" />
                     <span>{item.year}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <MapPinIcon className="h-4 w-4 text-cyan-400" />
+                    <MapPinIcon className="h-4 w-4 text-accent" />
                     <span>Yogyakarta, Indonesia</span>
                   </div>
                   <p className="pt-2">{item.description}</p>

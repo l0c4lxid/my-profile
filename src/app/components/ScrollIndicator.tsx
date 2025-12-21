@@ -15,10 +15,10 @@ export default function ScrollIndicator() {
       className="pointer-events-none fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 sm:block"
       aria-hidden={true}
     >
-      <div className="flex h-40 w-2 flex-col items-center rounded-full bg-white/30 p-1 backdrop-blur-lg dark:bg-slate-900/40">
+      <div className="flex h-40 w-2 flex-col items-center rounded-full bg-base-100/70 p-1 shadow-md backdrop-blur-lg">
         <motion.div
           style={{ scaleY }}
-          className="h-full w-full origin-bottom rounded-full bg-gradient-to-b from-indigo-400 via-cyan-300 to-pink-400"
+          className="h-full w-full origin-bottom rounded-full bg-primary"
           role="presentation"
         />
       </div>
