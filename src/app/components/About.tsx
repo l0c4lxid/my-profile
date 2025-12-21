@@ -1,161 +1,143 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
-  UserIcon,
-  AcademicCapIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  CodeBracketIcon,
-  LightBulbIcon,
-  RocketLaunchIcon,
+  SparklesIcon,
+  CommandLineIcon,
+  UserCircleIcon,
+  BoltIcon,
 } from "@heroicons/react/24/outline";
 
-interface AboutProps {
-  darkMode: boolean;
-}
+const highlights = [
+  {
+    title: "Creative Problem Solver",
+    description: "Translating complex needs into clean interfaces.",
+    icon: SparklesIcon,
+  },
+  {
+    title: "Systems Thinker",
+    description: "Blending business logic with technical clarity.",
+    icon: CommandLineIcon,
+  },
+  {
+    title: "People-First Support",
+    description: "Friendly IT guidance with a proactive mindset.",
+    icon: UserCircleIcon,
+  },
+  {
+    title: "Fast Learner",
+    description: "Always experimenting with new tools and patterns.",
+    icon: BoltIcon,
+  },
+];
 
-export default function About({ darkMode }: AboutProps) {
+export default function About() {
   return (
     <section
       id="about"
-      className={`py-20 ${
-        darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-      }`}
+      className="relative snap-start scroll-mt-24 px-6 py-28 sm:py-32"
     >
-      <div className="container mx-auto px-6">
-        <h2 className="section-title flex items-center justify-center group">
-          <UserIcon className="h-8 w-8 mr-2 text-indigo-600 transition-transform duration-300 group-hover:scale-110" />
-          About Me
-        </h2>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-400">
+            About
+          </p>
+          <h2 className="section-title mt-3">
+            A colorful story with
+            <span className="gradient-text"> tech at its core</span>
+          </h2>
+        </motion.div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-12 mt-16">
-          {/* Left column - Image with animation */}
-          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 transform transition-all duration-700 hover:scale-105">
-            <div className="relative">
-              {/* Animated decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-indigo-100 rounded-lg z-0 animate-pulse"></div>
-              <div
-                className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-100 rounded-lg z-0 animate-pulse"
-                style={{ animationDelay: "1s" }}
-              ></div>
-
-              {/* Main image container with hover effect */}
-              <div className="relative z-10 rounded-lg overflow-hidden shadow-xl group">
-                <div className="relative w-full h-64 sm:h-80 bg-gradient-to-r from-indigo-100 to-blue-100 overflow-hidden">
-                  {/* Template image for About section */}
-                  <Image
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
-                    alt="About Syaid Andhika - Coding Workspace"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                    style={{ objectFit: "cover" }}
-                    className="transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-6">
-                    <p className="text-white text-center font-medium">
-                      Passionate about coding and creating innovative solutions
-                    </p>
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_1.4fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="glass-card relative overflow-hidden rounded-[32px] p-8"
+          >
+            <div className="absolute -right-12 top-10 h-40 w-40 rounded-full bg-gradient-to-br from-indigo-400/30 to-cyan-300/20 blur-2xl" />
+            <div className="relative flex flex-col gap-6">
+              <div className="flex items-center gap-4">
+                <div className="rounded-2xl bg-gradient-to-br from-indigo-500 via-cyan-400 to-pink-400 p-[2px] shadow-lg shadow-indigo-500/20">
+                  <div className="relative h-20 w-20 overflow-hidden rounded-[14px] bg-white/80 dark:bg-slate-900/70">
+                    <Image
+                      src="/profile.jpg"
+                      alt="Syaid Andhika"
+                      fill
+                      sizes="80px"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600 dark:text-slate-400">
+                    Syaid Andhika
+                  </p>
+                  <p className="text-lg font-semibold text-slate-900 dark:text-white">
+                    Information Systems Student
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-
-          {/* Right column - Text content with icons */}
-          <div className="w-full lg:w-1/2">
-            <h3 className="text-2xl font-bold mb-6 text-indigo-600 flex items-center">
-              <LightBulbIcon className="h-6 w-6 mr-2 animate-pulse" />
-              Who am I?
-            </h3>
-
-            <div className="space-y-4">
-              <p className="text-base lg:text-lg flex items-start">
-                <span className="mr-2 text-indigo-500 mt-1">
-                  <RocketLaunchIcon className="h-5 w-5" />
-                </span>
-                <span className="font-semibold mx-1">
-                  Hello! I&apos;m Syaid Andhika, a passionate Information
-                  Systems student with a keen interest in bridging technology
-                  and business solutions.
-                </span>
+              <p className="text-base font-medium text-slate-800 dark:text-slate-300">
+                I&apos;m an Information Systems student based in Yogyakarta who
+                loves blending design, technology, and business insights. I
+                focus on building smooth, human-centered digital experiences
+                while supporting teams with dependable IT solutions.
               </p>
-
-              <p className="text-base lg:text-lg flex items-start">
-                <span className="mr-2 text-indigo-500 mt-1">
-                  <CodeBracketIcon className="h-5 w-5" />
+              <div className="flex flex-wrap gap-3">
+                <span className="rounded-full border border-slate-200/80 bg-slate-100/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300">
+                  UI/UX
                 </span>
-                I specialize in developing web applications and analyzing
-                information systems that help businesses operate more
-                efficiently. My academic background has equipped me with strong
-                analytical skills and technical knowledge.
-              </p>
-
-              <p className="text-base lg:text-lg flex items-start mb-6">
-                <span className="mr-2 text-indigo-500 mt-1">
-                  <LightBulbIcon className="h-5 w-5" />
+                <span className="rounded-full border border-slate-200/80 bg-slate-100/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300">
+                  IT Support
                 </span>
-                When I&apos;m not coding or studying, you can find me exploring
-                new technologies or engaging in outdoor activities.
-              </p>
-            </div>
-
-            {/* Personal info grid with icons */}
-            <div
-              className={`grid grid-cols-1 md:grid-cols-2 gap-4 text-base lg:text-lg p-4 rounded-lg ${
-                darkMode ? "bg-gray-700" : "bg-gray-50"
-              } transition-all duration-300 hover:shadow-md`}
-            >
-              <div className="space-y-3">
-                <p className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
-                  <UserIcon className="h-5 w-5 mr-2 text-indigo-500" />
-                  <span className="font-semibold"></span>
-                  <span className="ml-1">Syaid Andhika</span>
-                </p>
-                <p className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
-                  <AcademicCapIcon className="h-5 w-5 mr-2 text-indigo-500" />
-                  <span className="font-semibold"></span>
-                  <span className="ml-1">Information Systems</span>
-                </p>
+                <span className="rounded-full border border-slate-200/80 bg-slate-100/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-slate-700 dark:border-white/10 dark:bg-slate-900/60 dark:text-slate-300">
+                  Systems Thinking
+                </span>
               </div>
-              <div className="space-y-3">
-                <p className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
-                  <EnvelopeIcon className="h-5 w-5 mr-2 text-indigo-500" />
-                  <span className="font-semibold"></span>{" "}
-                  <a
-                    href="mailto:syaidxandhika@gmail.com"
-                    className="ml-1 hover:text-indigo-500 transition-colors"
-                  >
-                    syaidxandhika@gmail.com
-                  </a>
-                </p>
-                <p className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
-                  <MapPinIcon className="h-5 w-5 mr-2 text-indigo-500" />
-                  <span className="font-semibold"></span>{" "}
-                  <span className="ml-1">Yogyakarta, Indonesia</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Download CV button with animation */}
-            <a
-              href="/api/download-resume" // <--- Tetap mengarah ke API Route
-              className="btn-primary mt-8 inline-flex items-center group transition-all duration-300 hover:scale-105"
-              download="SyaidAndhika-resume.pdf" // Atribut download masih bisa membantu, tapi header server lebih utama
-            >
-              My Resume
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2 transition-transform duration-300 group-hover:translate-y-1"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+              <a
+                href="/api/download-resume"
+                className="btn-primary w-fit"
+                download="SyaidAndhika-resume.pdf"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
+                Download CV
+              </a>
+            </div>
+          </motion.div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            {highlights.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -6 }}
+                  className="glass-card rounded-3xl p-6"
+                >
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500/20 via-cyan-400/20 to-pink-400/20 text-indigo-500 dark:text-cyan-300">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium text-slate-800 dark:text-slate-300">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

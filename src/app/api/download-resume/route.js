@@ -28,8 +28,7 @@ export async function GET() {
     });
 
     return response;
-  } catch (error) {
-    console.error("Error downloading resume:", error);
+  } catch {
     // Jika file tidak ditemukan atau ada error lain saat membaca file
     return NextResponse.json(
       { message: "Resume file not found or error reading file." },

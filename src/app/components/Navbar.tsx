@@ -1,174 +1,173 @@
-"use client"; // Menandai file ini sebagai komponen klien
+"use client";
 
-import {
-  Bars3Icon,
-  HomeIcon,
-  UserIcon,
-  CodeBracketIcon,
-  FolderIcon,
-  AcademicCapIcon,
-  EnvelopeIcon,
-  XMarkIcon,
-  SunIcon,
-  MoonIcon,
-} from "@heroicons/react/24/outline"; // Menggunakan ikon dari Heroicons
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import { useTheme } from "./ThemeProvider";
 
-// Definisikan tipe untuk props
-interface NavbarProps {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
 
-// Definisikan struktur menu item
-interface MenuItem {
-  name: string;
-  href: string;
-  icon: React.ReactNode;
-}
+export default function Navbar() {
+  const { theme, toggleTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
-  // Array menu items dengan ikon dan anchor links untuk single page
-  const menuItems: MenuItem[] = [
-    { name: "Home", href: "#home", icon: <HomeIcon className="h-5 w-5" /> },
-    { name: "About", href: "#about", icon: <UserIcon className="h-5 w-5" /> },
-    {
-      name: "Skills",
-      href: "#skills",
-      icon: <CodeBracketIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Projects",
-      href: "#projects",
-      icon: <FolderIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Education",
-      href: "#education",
-      icon: <AcademicCapIcon className="h-5 w-5" />,
-    },
-    {
-      name: "Contact",
-      href: "#contact",
-      icon: <EnvelopeIcon className="h-5 w-5" />,
-    },
-  ];
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px" }
+    );
 
-  // Function to handle smooth scrolling for anchor links
-  const handleScrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
+    navItems.forEach((item) => {
+      const element = document.getElementById(item.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavClick = (id: string) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-
-    // Close mobile menu if it's open (using DOM instead of state)
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (mobileMenu) {
-      mobileMenu.classList.add("hidden");
-    }
-
-    // Toggle burger icon
-    const burgerIcon = document.getElementById("burger-icon");
-    const closeIcon = document.getElementById("close-icon");
-    if (burgerIcon && closeIcon) {
-      burgerIcon.classList.remove("hidden");
-      closeIcon.classList.add("hidden");
-    }
-  };
-
-  // Toggle mobile menu without useState
-  const toggleMobileMenu = () => {
-    const mobileMenu = document.getElementById("mobile-menu");
-    const burgerIcon = document.getElementById("burger-icon");
-    const closeIcon = document.getElementById("close-icon");
-
-    if (mobileMenu && burgerIcon && closeIcon) {
-      mobileMenu.classList.toggle("hidden");
-      burgerIcon.classList.toggle("hidden");
-      closeIcon.classList.toggle("hidden");
-    }
+    setActiveSection(id);
+    setMenuOpen(false);
   };
 
   return (
-    <nav
-      className={`w-full ${
-        darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-      } py-4 px-6 sticky top-0 z-50 shadow-sm`}
-    >
-      <div className="container mx-auto flex items-center justify-between md:justify-start">
-        {/* Ikon Burger untuk Menu Mobile */}
+    <nav className="fixed top-4 left-0 right-0 z-50 px-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between rounded-full border border-slate-200/80 bg-white/95 px-5 py-3 shadow-xl shadow-indigo-500/15 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/60">
         <button
-          onClick={toggleMobileMenu}
-          className={`md:hidden focus:outline-none ${
-            darkMode ? "text-white" : "text-slate-800"
-          }`}
+          type="button"
+          className="text-lg font-semibold tracking-tight"
+          onClick={() => handleNavClick("home")}
+          aria-label="Scroll to top"
         >
-          <Bars3Icon id="burger-icon" className="h-6 w-6" />
-          <XMarkIcon id="close-icon" className="h-6 w-6 hidden" />
+          <span className="logo-gradient text-xl font-semibold">
+            ./l0c4lxid
+          </span>
         </button>
 
-        {/* Logo */}
-        <a href="#home" className="text-2xl font-bold mx-auto md:mx-0 md:mr-8">
-          <span className="font-mono text-indigo-600">./l0c4lxid</span>
-        </a>
-
-        {/* Menu Desktop - Centered */}
-        <div className="hidden md:flex flex-grow justify-center space-x-8">
-          {menuItems.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              onClick={(e) => handleScrollToSection(e, item.href)}
-              className="font-medium relative transition duration-300 ease-in-out hover:text-indigo-600 flex items-center"
+        <div className="hidden items-center gap-3 md:flex">
+          {navItems.map((item) => (
+            <button
+              type="button"
+              key={item.id}
+              onClick={() => handleNavClick(item.id)}
+              className={`relative rounded-full px-4 py-2 text-sm font-semibold transition ${
+                activeSection === item.id
+                  ? "text-slate-900 dark:text-white"
+                  : "text-slate-700 dark:text-slate-200"
+              }`}
+              aria-current={activeSection === item.id ? "page" : undefined}
             >
-              <span className="mr-1">{item.icon}</span>
-              {item.name}
-              <span className="absolute block h-1 bg-indigo-600 transition-all duration-300 transform scale-x-0 hover:scale-x-100 bottom-0 left-0 right-0"></span>
-            </a>
+              {activeSection === item.id && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500/30 via-cyan-400/30 to-pink-500/30 shadow-sm"
+                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                />
+              )}
+              <span className="relative z-10">{item.label}</span>
+            </button>
           ))}
         </div>
 
-        {/* Dark Mode Toggle - Desktop & Mobile */}
-        <button
-          onClick={toggleDarkMode}
-          className={`flex items-center justify-center w-10 h-10 rounded-full transition duration-300 ${
-            darkMode ? "bg-gray-700" : "bg-gray-300"
-          }`}
-          aria-label="Toggle Dark Mode"
-        >
-          {darkMode ? (
-            <SunIcon className="h-5 w-5 text-yellow-500" />
-          ) : (
-            <MoonIcon className="h-5 w-5 text-gray-800" />
-          )}
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-slate-200/80 bg-white/85 text-slate-700 shadow-lg shadow-indigo-500/10 transition dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200"
+            aria-label="Toggle theme"
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={theme}
+                initial={{ rotate: -90, opacity: 0, scale: 0.7 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: 90, opacity: 0, scale: 0.7 }}
+                transition={{ duration: 0.2 }}
+              >
+                {theme === "dark" ? (
+                  <SunIcon className="h-5 w-5 text-amber-300" />
+                ) : (
+                  <MoonIcon className="h-5 w-5 text-indigo-500" />
+                )}
+              </motion.span>
+            </AnimatePresence>
+          </button>
+
+          <button
+            type="button"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-slate-200/80 bg-white/85 text-slate-700 shadow-lg shadow-indigo-500/10 transition dark:border-white/10 dark:bg-slate-900/70 dark:text-slate-200 md:hidden"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <motion.span
+              className="h-0.5 w-5 rounded-full bg-current"
+              animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="h-0.5 w-5 rounded-full bg-current"
+              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 0.2 }}
+            />
+            <motion.span
+              className="h-0.5 w-5 rounded-full bg-current"
+              animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+          </button>
+        </div>
       </div>
 
-      {/* Dropdown Menu untuk Mobile - Hidden by default */}
-      <div
-        id="mobile-menu"
-        className={`md:hidden ${
-          darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
-        } py-4 px-6 absolute left-0 right-0 shadow-md hidden`}
-      >
-        <ul className="space-y-4">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <a
-                href={item.href}
-                onClick={(e) => handleScrollToSection(e, item.href)}
-                className="font-medium flex items-center hover:text-indigo-600 transition py-2"
-              >
-                <span className="mr-3">{item.icon}</span>
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="mx-auto mt-3 max-w-6xl rounded-3xl border border-slate-200/70 bg-white/90 p-4 shadow-xl shadow-indigo-500/10 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70 md:hidden"
+          >
+            <div className="grid gap-2">
+              {navItems.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className="flex items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-white/80 dark:text-slate-200 dark:hover:bg-slate-800/70"
+                >
+                  <span>{item.label}</span>
+                  <span
+                    className={`h-2.5 w-2.5 rounded-full bg-gradient-to-br from-indigo-400 to-cyan-400 transition-opacity ${
+                      activeSection === item.id ? "opacity-100" : "opacity-20"
+                    }`}
+                  />
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

@@ -1,63 +1,27 @@
-import { useEffect, useState } from "react";
+"use client";
 
-const sections = [
-  "home",
-  "about",
-  "skills",
-  "projects",
-  "education",
-  "contact",
-];
+import { motion, useScroll, useSpring } from "framer-motion";
 
-const ScrollIndicator = () => {
-  const [activeSection, setActiveSection] = useState("");
-
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-
-    sections.forEach((section) => {
-      const sectionElement = document.getElementById(section);
-      if (sectionElement) {
-        const sectionTop = sectionElement.offsetTop;
-        const sectionHeight = sectionElement.clientHeight;
-
-        if (
-          scrollPosition >= sectionTop - sectionHeight / 3 &&
-          scrollPosition < sectionTop + sectionHeight - sectionHeight / 3
-        ) {
-          setActiveSection(section);
-        }
-      }
-    });
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+export default function ScrollIndicator() {
+  const { scrollYProgress } = useScroll();
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   return (
-    <div className="fixed top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2">
-      {sections.map((section) => (
-        <div
-          key={section}
-          className={`w-3 h-3 rounded-full transition-all duration-300 cursor-pointer flex items-center justify-center ${
-            activeSection === section
-              ? "bg-gradient-to-b from-purple-300 to-purple-500 scale-125 shadow-lg"
-              : "bg-gradient-to-b from-blue-300 to-blue-700"
-          }`}
-          onClick={() => {
-            const sectionElement = document.getElementById(section);
-            if (sectionElement) {
-              sectionElement.scrollIntoView({ behavior: "smooth" });
-            }
-          }}
+    <div
+      className="pointer-events-none fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 sm:block"
+      aria-hidden={true}
+    >
+      <div className="flex h-40 w-2 flex-col items-center rounded-full bg-white/30 p-1 backdrop-blur-lg dark:bg-slate-900/40">
+        <motion.div
+          style={{ scaleY }}
+          className="h-full w-full origin-bottom rounded-full bg-gradient-to-b from-indigo-400 via-cyan-300 to-pink-400"
+          role="presentation"
         />
-      ))}
+      </div>
     </div>
   );
-};
-
-export default ScrollIndicator;
+}

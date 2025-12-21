@@ -1,42 +1,35 @@
-"use client"; // Menandai file ini sebagai komponen klien
+"use client";
 
-import { useEffect, useState } from "react";
-import { ArrowUpIcon } from "@heroicons/react/24/outline"; // Menggunakan ikon dari Heroicons
+import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { ArrowUpIcon } from "@heroicons/react/24/outline";
 
 export default function ScrollToTop() {
-  const [isVisible, setIsVisible] = useState(false); // State untuk menentukan apakah tombol harus ditampilkan
+  const { scrollY } = useScroll();
+  const [visible, setVisible] = useState(false);
 
-  const handleScroll = () => {
-    // Menentukan saat tombol muncul
-    if (window.scrollY > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" }); // Melakukan scroll ke atas dengan halus
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll); // Menambahkan event listener scroll
-
-    // Clean up listener saat komponen unmount
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setVisible(latest > 400);
+  });
 
   return (
-    <button
-      onClick={scrollToTop}
-      className={`fixed bottom-4 right-4 p-3 bg-indigo-600 text-white rounded-full shadow-lg transition-opacity duration-300 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      } hover:bg-indigo-700 transform hover:scale-110`} // Menambahkan efek hover
-      aria-label="Scroll to Top"
-    >
-      <ArrowUpIcon className="h-5 w-5" />
-    </button>
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.2 }}
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 via-cyan-400 to-pink-500 text-white shadow-xl shadow-indigo-500/30"
+          whileHover={{ y: -4 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Scroll to top"
+        >
+          <ArrowUpIcon className="h-5 w-5" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }

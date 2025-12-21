@@ -1,347 +1,108 @@
+"use client";
+
 import { motion } from "framer-motion";
 import {
   AcademicCapIcon,
   BuildingLibraryIcon,
-  CalendarIcon,
+  CalendarDaysIcon,
   MapPinIcon,
-  BookOpenIcon,
-  UserGroupIcon,
 } from "@heroicons/react/24/outline";
 
-interface EducationProps {
-  darkMode: boolean;
-}
+const educationItems = [
+  {
+    title: "Bachelor of Information Systems",
+    institution: "Universitas Bina Sarana Informatika - Kramat 98",
+    year: "2024 - 2025",
+    description:
+      "Exploring software development, data analysis, and modern IT project management.",
+  },
+  {
+    title: "Diploma in Information Systems",
+    institution: "Universitas Bina Sarana Informatika - Yogyakarta",
+    year: "2021 - 2024",
+    description:
+      "Focused on practical technology solutions for real business contexts.",
+  },
+  {
+    title: "Senior Highschool (MIPA)",
+    institution: "SMA N 1 Pleret",
+    year: "2018 - 2021",
+    description:
+      "Built a strong foundation in analytical thinking and problem-solving.",
+  },
+];
 
-export default function Education({ darkMode }: EducationProps) {
+export default function Education() {
   return (
     <section
       id="education"
-      className={`py-20 ${
-        darkMode ? "bg-gray-800 text-white" : "bg-slate-50 text-gray-800"
-      }`}
+      className="relative snap-start scroll-mt-24 px-6 py-28 sm:py-32"
     >
-      <div className="container mx-auto px-4 sm:px-6 overflow-hidden">
-        <motion.h2
-          className="section-title flex items-center justify-center group"
-          initial={{ opacity: 0, y: -20 }}
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          className="text-center"
         >
-          <AcademicCapIcon className="h-8 w-8 mr-2 text-indigo-600 transition-transform duration-300 group-hover:scale-110" />
-          Education
-        </motion.h2>
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-slate-600 dark:text-slate-400">
+            Education
+          </p>
+          <h2 className="section-title mt-3">
+            Learning with <span className="gradient-text">purpose</span>
+          </h2>
+        </motion.div>
 
-        {/* Timeline container */}
-        <div className="relative mt-16 max-w-6xl mx-auto">
-          {/* Center line - only visible on md and larger screens */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 via-blue-500 to-indigo-500 rounded-full"></div>
+        <div className="relative grid gap-8">
+          <div className="absolute left-5 top-0 h-full w-1 rounded-full bg-gradient-to-b from-indigo-400 via-cyan-300 to-pink-400 opacity-70 md:left-1/2 md:-translate-x-1/2" />
 
-          {/* Education Items */}
-          <div className="space-y-12 md:space-y-0">
-            {/* S1 Education - Right side on desktop, full width on mobile */}
-            <div className="flex flex-col md:flex-row md:items-center mb-12">
-              {/* Empty left side for first item on desktop */}
-              <div className="hidden md:block md:w-1/2"></div>
-
-              {/* Timeline dot - only visible on md and larger screens */}
-              <div className="hidden md:flex md:items-center md:justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-                <motion.div
-                  className={`w-6 h-6 rounded-full ${
-                    darkMode ? "bg-indigo-400" : "bg-indigo-600"
-                  } z-10 border-4 ${
-                    darkMode ? "border-gray-800" : "border-slate-50"
-                  }`}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                    delay: 0.2,
-                  }}
-                ></motion.div>
-              </div>
-
-              {/* Right content on desktop, full width on mobile */}
-              <motion.div
-                className="w-full md:w-1/2 md:pl-8"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div
-                  className={`${
-                    darkMode ? "bg-gray-700" : "bg-white"
-                  } p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 cursor-pointer`}
-                >
-                  <div className="flex items-start">
-                    <div
-                      className={`mr-4 ${
-                        darkMode ? "bg-indigo-900" : "bg-indigo-100"
-                      } p-3 rounded-full transition-all duration-300 hover:scale-110`}
-                    >
-                      <BuildingLibraryIcon
-                        className={`h-8 w-8 ${
-                          darkMode ? "text-indigo-400" : "text-indigo-600"
-                        } transition-all duration-300`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-xl font-bold mb-2 ${
-                          darkMode ? "text-indigo-400" : "text-indigo-600"
-                        } transition-all duration-300 hover:translate-x-1`}
-                      >
-                        Bachelor of Information Systems
-                      </h3>
-                      <div className="flex items-center mb-2 group">
-                        <MapPinIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-indigo-400" : "text-indigo-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-indigo-500 text-sm sm:text-base`}
-                        >
-                          Universitas Bina Sarana Informatika - Kampus Kramat 98
-                        </p>
-                      </div>
-                      <div className="flex items-center mb-3 group">
-                        <CalendarIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-indigo-400" : "text-indigo-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-indigo-500`}
-                        >
-                          2024 - Present
-                        </p>
-                      </div>
-                      <p
-                        className={`${
-                          darkMode ? "text-gray-300" : "text-slate-600"
-                        } transition-all duration-300 hover:text-opacity-80`}
-                      >
-                        Currently pursuing a Bachelor&apos;s degree in
-                        Information Systems, focusing on advanced software
-                        development, data analysis, and IT project management.
-                      </p>
-                    </div>
+          {educationItems.map((item, index) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative flex flex-col gap-6 md:flex-row ${
+                index % 2 === 0
+                  ? "md:justify-start md:pr-10"
+                  : "md:justify-end md:pl-10"
+              }`}
+            >
+              <div className="absolute left-2 top-6 h-6 w-6 rounded-full bg-gradient-to-br from-indigo-400 to-pink-400 shadow-lg shadow-pink-400/40 md:left-1/2 md:-translate-x-1/2" />
+              <div className="glass-card ml-10 rounded-[28px] p-6 md:ml-0 md:w-[46%]">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-400/30 via-cyan-300/20 to-pink-400/30 text-indigo-500 dark:text-cyan-200">
+                    <AcademicCapIcon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
+                      {item.year}
+                    </p>
                   </div>
                 </div>
-              </motion.div>
-            </div>
-
-            {/* D3 Education - Left side on desktop, full width on mobile */}
-            <div className="flex flex-col md:flex-row md:items-center mb-12">
-              {/* Left content on desktop, full width on mobile */}
-              <motion.div
-                className="w-full md:w-1/2 md:pr-8"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div
-                  className={`${
-                    darkMode ? "bg-gray-700" : "bg-white"
-                  } p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 cursor-pointer`}
-                >
-                  <div className="flex items-start">
-                    <div
-                      className={`mr-4 ${
-                        darkMode ? "bg-blue-900" : "bg-blue-100"
-                      } p-3 rounded-full transition-all duration-300 hover:scale-110`}
-                    >
-                      <BookOpenIcon
-                        className={`h-8 w-8 ${
-                          darkMode ? "text-blue-400" : "text-blue-600"
-                        } transition-all duration-300`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-xl font-bold mb-2 ${
-                          darkMode ? "text-blue-400" : "text-blue-600"
-                        } transition-all duration-300 hover:translate-x-1`}
-                      >
-                        Diploma in Information Systems
-                      </h3>
-                      <div className="flex items-center mb-2 group">
-                        <MapPinIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-blue-400" : "text-blue-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-blue-500 text-sm sm:text-base`}
-                        >
-                          Universitas Bina Sarana Informatika - Yogyakarta
-                        </p>
-                      </div>
-                      <div className="flex items-center mb-3 group">
-                        <CalendarIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-blue-400" : "text-blue-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-blue-500`}
-                        >
-                          2021 - 2024
-                        </p>
-                      </div>
-                      <p
-                        className={`${
-                          darkMode ? "text-gray-300" : "text-slate-600"
-                        } transition-all duration-300 hover:text-opacity-80`}
-                      >
-                        Completed a Diploma in Information Systems with a focus
-                        on practical applications of technology in business
-                        environments.
-                      </p>
-                    </div>
+                <div className="mt-4 space-y-2 text-sm font-medium text-slate-800 dark:text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <BuildingLibraryIcon className="h-4 w-4 text-indigo-400" />
+                    <span>{item.institution}</span>
                   </div>
-                </div>
-              </motion.div>
-
-              {/* Timeline dot - only visible on md and larger screens */}
-              <div className="hidden md:flex md:items-center md:justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-                <motion.div
-                  className={`w-6 h-6 rounded-full ${
-                    darkMode ? "bg-blue-400" : "bg-blue-600"
-                  } z-10 border-4 ${
-                    darkMode ? "border-gray-800" : "border-slate-50"
-                  }`}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                    delay: 0.2,
-                  }}
-                ></motion.div>
-              </div>
-
-              {/* Empty right side for desktop */}
-              <div className="hidden md:block md:w-1/2"></div>
-            </div>
-
-            {/* High School Education - Right side on desktop, full width on mobile */}
-            <div className="flex flex-col md:flex-row md:items-center">
-              {/* Empty left side for desktop */}
-              <div className="hidden md:block md:w-1/2"></div>
-
-              {/* Timeline dot - only visible on md and larger screens */}
-              <div className="hidden md:flex md:items-center md:justify-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-                <motion.div
-                  className={`w-6 h-6 rounded-full ${
-                    darkMode ? "bg-indigo-400" : "bg-indigo-600"
-                  } z-10 border-4 ${
-                    darkMode ? "border-gray-800" : "border-slate-50"
-                  }`}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                    delay: 0.2,
-                  }}
-                ></motion.div>
-              </div>
-
-              {/* Right content on desktop, full width on mobile */}
-              <motion.div
-                className="w-full md:w-1/2 md:pl-8"
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                <div
-                  className={`${
-                    darkMode ? "bg-gray-700" : "bg-white"
-                  } p-6 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl transform hover:-translate-y-1 cursor-pointer`}
-                >
-                  <div className="flex items-start">
-                    <div
-                      className={`mr-4 ${
-                        darkMode ? "bg-indigo-900" : "bg-indigo-100"
-                      } p-3 rounded-full transition-all duration-300 hover:scale-110`}
-                    >
-                      <UserGroupIcon
-                        className={`h-8 w-8 ${
-                          darkMode ? "text-indigo-400" : "text-indigo-600"
-                        } transition-all duration-300`}
-                      />
-                    </div>
-                    <div>
-                      <h3
-                        className={`text-xl font-bold mb-2 ${
-                          darkMode ? "text-indigo-400" : "text-indigo-600"
-                        } transition-all duration-300 hover:translate-x-1`}
-                      >
-                        Senior Highschool (MIPA)
-                      </h3>
-                      <div className="flex items-center mb-2 group">
-                        <MapPinIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-indigo-400" : "text-indigo-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-indigo-500`}
-                        >
-                          SMA N 1 Pleret
-                        </p>
-                      </div>
-                      <div className="flex items-center mb-3 group">
-                        <CalendarIcon
-                          className={`h-5 w-5 mr-2 flex-shrink-0 ${
-                            darkMode ? "text-indigo-400" : "text-indigo-500"
-                          } transition-transform duration-300 group-hover:scale-110`}
-                        />
-                        <p
-                          className={`${
-                            darkMode ? "text-gray-300" : "text-slate-600"
-                          } transition-all duration-300 group-hover:text-indigo-500`}
-                        >
-                          2018 - 2021
-                        </p>
-                      </div>
-                      <p
-                        className={`${
-                          darkMode ? "text-gray-300" : "text-slate-600"
-                        } transition-all duration-300 hover:text-opacity-80`}
-                      >
-                        Graduated with a focus on Mathematics and Natural
-                        Sciences (MIPA). Developed a strong foundation in
-                        analytical thinking and problem-solving skills.
-                      </p>
-                    </div>
+                  <div className="flex items-center gap-2">
+                    <CalendarDaysIcon className="h-4 w-4 text-pink-400" />
+                    <span>{item.year}</span>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <MapPinIcon className="h-4 w-4 text-cyan-400" />
+                    <span>Yogyakarta, Indonesia</span>
+                  </div>
+                  <p className="pt-2">{item.description}</p>
                 </div>
-              </motion.div>
-            </div>
-          </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

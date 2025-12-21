@@ -1,4 +1,3 @@
-// components/SchemaMarkup.tsx
 import Script from "next/script";
 
 export default function SchemaMarkup() {
@@ -7,9 +6,13 @@ export default function SchemaMarkup() {
     "@type": "Person",
     name: "Syaid Andhika",
     url: "https://syaidandhika.my.id",
-    jobTitle: "Information Systems Student",
+    jobTitle: "Information Systems Student & IT Support",
     description:
-      "Information Systems student passionate about technology and innovation",
+      "Information Systems student and IT support professional passionate about technology and innovation",
+    sameAs: [
+      "https://www.linkedin.com/in/syaid-andhika-24831b2bb/",
+      "https://github.com/l0c4lxid",
+    ],
   };
 
   return (
