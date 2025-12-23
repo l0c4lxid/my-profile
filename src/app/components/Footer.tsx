@@ -1,4 +1,12 @@
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import {
+  AcademicCapIcon,
+  ArrowUpRightIcon,
+  BriefcaseIcon,
+  EnvelopeIcon,
+  HomeIcon,
+  SparklesIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,19 +32,46 @@ export default function Footer() {
                 </p>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-semibold uppercase tracking-[0.25em] text-base-content/60">
-                <a className="transition hover:text-primary" href="#home">
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#home"
+                >
+                  <HomeIcon className="h-4 w-4" />
                   Home
                 </a>
-                <a className="transition hover:text-primary" href="#about">
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#about"
+                >
+                  <UserCircleIcon className="h-4 w-4" />
                   Tentang
                 </a>
-                <a className="transition hover:text-primary" href="#skills">
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#skills"
+                >
+                  <SparklesIcon className="h-4 w-4" />
                   Skills
                 </a>
-                <a className="transition hover:text-primary" href="#projects">
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#projects"
+                >
+                  <BriefcaseIcon className="h-4 w-4" />
                   Proyek
                 </a>
-                <a className="transition hover:text-primary" href="#contact">
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#education"
+                >
+                  <AcademicCapIcon className="h-4 w-4" />
+                  Pendidikan
+                </a>
+                <a
+                  className="flex items-center gap-2 transition hover:text-primary"
+                  href="#contact"
+                >
+                  <EnvelopeIcon className="h-4 w-4" />
                   Kontak
                 </a>
               </div>

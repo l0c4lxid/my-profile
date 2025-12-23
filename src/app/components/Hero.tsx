@@ -3,6 +3,10 @@
 import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  EnvelopeIcon,
+  FolderOpenIcon,
+} from "@heroicons/react/24/outline";
 
 const typedName = "Syaid Andhika";
 
@@ -90,16 +94,18 @@ export default function Hero() {
                   "0 20px 40px color-mix(in oklch, var(--color-primary) 35%, transparent)",
               }}
               whileTap={{ scale: 0.98 }}
-              className="btn btn-primary normal-case shadow-lg"
+              className="btn btn-primary normal-case gap-2 shadow-lg"
             >
+              <FolderOpenIcon className="h-5 w-5" />
               Lihat Proyek
             </motion.a>
             <motion.a
               href="#contact"
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className="btn btn-secondary normal-case shadow-lg"
+              className="btn btn-secondary normal-case gap-2 shadow-lg"
             >
+              <EnvelopeIcon className="h-5 w-5" />
               Hubungi Saya
             </motion.a>
           </div>

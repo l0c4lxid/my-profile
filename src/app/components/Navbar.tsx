@@ -3,15 +3,25 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
+import {
+  AcademicCapIcon,
+  BriefcaseIcon,
+  Bars3Icon,
+  EnvelopeIcon,
+  HomeIcon,
+  SparklesIcon,
+  UserCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { useTheme } from "./ThemeProvider";
 
 const navItems = [
-  { id: "home", label: "Beranda" },
-  { id: "about", label: "Tentang" },
-  { id: "skills", label: "Keahlian" },
-  { id: "projects", label: "Proyek" },
-  { id: "education", label: "Pendidikan" },
-  { id: "contact", label: "Kontak" },
+  { id: "home", label: "Beranda", icon: HomeIcon },
+  { id: "about", label: "Tentang", icon: UserCircleIcon },
+  { id: "skills", label: "Keahlian", icon: SparklesIcon },
+  { id: "projects", label: "Proyek", icon: BriefcaseIcon },
+  { id: "education", label: "Pendidikan", icon: AcademicCapIcon },
+  { id: "contact", label: "Kontak", icon: EnvelopeIcon },
 ];
 
 export default function Navbar() {
@@ -65,7 +75,9 @@ export default function Navbar() {
         </button>
 
         <div className="hidden items-center gap-3 md:flex">
-          {navItems.map((item) => (
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
             <button
               type="button"
               key={item.id}
@@ -82,9 +94,13 @@ export default function Navbar() {
                   transition={{ type: "spring", stiffness: 260, damping: 22 }}
                 />
               )}
-              <span className="relative z-10">{item.label}</span>
+              <span className="relative z-10 flex items-center gap-2">
+                <Icon className="h-4 w-4" />
+                {item.label}
+              </span>
             </button>
-          ))}
+          );
+          })}
         </div>
 
         <div className="flex items-center gap-3">
@@ -118,21 +134,22 @@ export default function Navbar() {
             aria-label="Buka menu"
             aria-expanded={menuOpen}
           >
-            <motion.span
-              className="h-0.5 w-5 rounded-full bg-current"
-              animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="h-0.5 w-5 rounded-full bg-current"
-              animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              className="h-0.5 w-5 rounded-full bg-current"
-              animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              transition={{ duration: 0.2 }}
-            />
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={menuOpen ? "close" : "open"}
+                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-center justify-center"
+              >
+                {menuOpen ? (
+                  <XMarkIcon className="h-5 w-5" />
+                ) : (
+                  <Bars3Icon className="h-5 w-5" />
+                )}
+              </motion.span>
+            </AnimatePresence>
           </button>
         </div>
       </div>
@@ -147,7 +164,9 @@ export default function Navbar() {
             className="mx-auto mt-3 max-w-6xl rounded-3xl border border-base-300 bg-base-100 p-4 shadow-lg backdrop-blur md:hidden"
           >
             <div className="grid gap-2">
-              {navItems.map((item) => (
+              {navItems.map((item) => {
+                const Icon = item.icon;
+                return (
                 <button
                   type="button"
                   key={item.id}
@@ -158,14 +177,18 @@ export default function Navbar() {
                       : ""
                   }`}
                 >
-                  <span>{item.label}</span>
+                  <span className="flex items-center gap-2">
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </span>
                   <span
                     className={`h-2.5 w-2.5 rounded-full bg-primary transition-opacity ${
                       activeSection === item.id ? "opacity-100" : "opacity-20"
                     }`}
                   />
                 </button>
-              ))}
+              );
+              })}
             </div>
           </motion.div>
         )}

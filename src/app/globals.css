@@ -50,7 +50,7 @@
     pointer-events: none;
     position: fixed;
     inset: 0;
-    z-index: 60;
+    z-index: 9999;
     color: hsl(var(--p));
   }
 
@@ -183,15 +183,14 @@
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
+  html.has-custom-cursor,
   body.has-custom-cursor {
     cursor: none;
   }
 
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor input,
-  body.has-custom-cursor textarea {
-    cursor: none;
+  html.has-custom-cursor *,
+  body.has-custom-cursor * {
+    cursor: none !important;
   }
 }
 
