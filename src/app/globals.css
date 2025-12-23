@@ -46,6 +46,15 @@
       caret-blink 0.7s step-end infinite;
   }
 
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   .custom-cursor {
     pointer-events: none;
     position: fixed;
