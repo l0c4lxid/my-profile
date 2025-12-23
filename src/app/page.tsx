@@ -8,10 +8,12 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollIndicator from "./components/ScrollIndicator";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
+      <CustomCursor />
       <Navbar />
       <div className="snap-y snap-mandatory">
         <Hero />

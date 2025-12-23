@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type SVGProps } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   EnvelopeIcon,
@@ -9,10 +9,21 @@ import {
   PhoneIcon,
 } from "@heroicons/react/24/outline";
 
-const WEB3FORMS_ACCESS_KEY =
-  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "";
 
 type Status = "idle" | "loading" | "success" | "error";
+
+const LinkedInIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M22.223 0H1.771C0.792 0 0 0.774 0 1.729v20.542C0 23.227 0.792 24 1.771 24h20.452C23.2 24 24 23.227 24 22.271V1.729C24 0.774 23.2 0 22.223 0zM7.114 20.452H3.559V9h3.555v11.452zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM20.447 20.452h-3.554v-5.569c0-1.328-0.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h0.047c0.476-0.9 1.637-1.85 3.367-1.85 3.6 0 4.266 2.368 4.266 5.451v6.29z" />
+  </svg>
+);
+
+const GitHubIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+    <path d="M12 0.296c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385 0.6 0.113 0.82-0.258 0.82-0.577 0-0.285-0.01-1.04-0.015-2.04-3.338 0.724-4.042-1.61-4.042-1.61-0.546-1.387-1.333-1.756-1.333-1.756-1.089-0.745 0.084-0.729 0.084-0.729 1.205 0.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495 0.998 0.108-0.776 0.418-1.305 0.762-1.605-2.665-0.305-5.467-1.334-5.467-5.93 0-1.31 0.47-2.38 1.236-3.22-0.124-0.304-0.535-1.527 0.117-3.176 0 0 1.008-0.322 3.3 1.23 0.957-0.266 1.983-0.399 3.003-0.404 1.02 0.005 2.047 0.138 3.006 0.404 2.29-1.552 3.296-1.23 3.296-1.23 0.653 1.649 0.242 2.872 0.118 3.176 0.77 0.84 1.235 1.91 1.235 3.22 0 4.61-2.807 5.624-5.479 5.922 0.43 0.372 0.823 1.102 0.823 2.222 0 1.606-0.014 2.896-0.014 3.286 0 0.322 0.218 0.694 0.825 0.576C20.565 22.092 24 17.592 24 12.296c0-6.627-5.373-12-12-12z" />
+  </svg>
+);
 
 export default function Contact() {
   const [formState, setFormState] = useState({
@@ -82,7 +93,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative snap-start scroll-mt-24 px-6 py-28 sm:py-32"
+      className="relative snap-start scroll-mt-24 px-6 py-20 sm:py-24"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <motion.div
@@ -134,7 +145,7 @@ export default function Contact() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <MapPinIcon className="h-5 w-5" />
                 </span>
-                <span>Solo, Indonesia</span>
+                <span>Yogyakarta, Indonesia</span>
               </div>
             </div>
             <div className="mt-8 flex gap-3">
@@ -142,16 +153,18 @@ export default function Contact() {
                 href="https://www.linkedin.com/in/syaid-andhika-24831b2bb/"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-outline normal-case"
+                className="btn btn-outline normal-case gap-2"
               >
+                <LinkedInIcon className="h-4 w-4" />
                 LinkedIn
               </a>
               <a
                 href="https://github.com/l0c4lxid"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-outline normal-case"
+                className="btn btn-outline normal-case gap-2"
               >
+                <GitHubIcon className="h-4 w-4" />
                 GitHub
               </a>
             </div>
@@ -217,7 +230,7 @@ export default function Contact() {
                   value={formState.message}
                   onChange={handleChange}
                   placeholder="Ceritakan proyek Anda"
-                  className="textarea textarea-bordered h-32 w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
+                  className="textarea textarea-bordered h-36 w-full resize-none rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60 sm:h-40"
                   required
                 />
               </div>
@@ -233,8 +246,8 @@ export default function Contact() {
                       status === "success"
                         ? "alert-success"
                         : status === "error"
-                          ? "alert-error"
-                          : "alert-info"
+                        ? "alert-error"
+                        : "alert-info"
                     }`}
                     role="status"
                   >

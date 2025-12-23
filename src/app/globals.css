@@ -35,12 +35,79 @@
   .typing-name {
     display: inline-block;
     width: 0;
-    max-width: var(--typing-width);
     overflow: hidden;
     white-space: nowrap;
     border-right: 2px solid currentColor;
-    animation: typing 2s steps(var(--typing-steps)) 0.2s forwards,
+    will-change: width;
+  }
+
+  .typing-name[data-typing="ready"] {
+    animation: typing 2s steps(var(--typing-steps), end) 0.2s forwards,
       caret-blink 0.7s step-end infinite;
+  }
+
+  .custom-cursor {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    color: hsl(var(--p));
+  }
+
+  .custom-cursor__dot,
+  .custom-cursor__ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0)
+      translate(-50%, -50%) scale(var(--cursor-scale, 1));
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 1;
+  }
+
+  .custom-cursor__trail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: var(--trail-length, 0px);
+    transform: translate3d(var(--trail-x, 0px), var(--trail-y, 0px), 0)
+      translateY(-50%) rotate(var(--trail-angle, 0deg));
+    transform-origin: left center;
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklch, currentColor 55%, transparent),
+      transparent
+    );
+    opacity: 0.7;
+    filter: blur(0.2px);
+  }
+
+  .custom-cursor__dot {
+    height: 8px;
+    width: 8px;
+    border-radius: 999px;
+    background-color: currentColor;
+    box-shadow: 0 0 16px
+      color-mix(in oklch, currentColor 35%, transparent);
+  }
+
+  .custom-cursor__ring {
+    height: 42px;
+    width: 42px;
+    border-radius: 999px;
+    border: 2px solid color-mix(in oklch, currentColor 55%, transparent);
+    background-color: color-mix(in oklch, currentColor 8%, transparent);
+  }
+
+  .custom-cursor[data-visible="false"] .custom-cursor__trail {
+    opacity: 0;
+  }
+
+  .custom-cursor[data-visible="false"] .custom-cursor__dot,
+  .custom-cursor[data-visible="false"] .custom-cursor__ring {
+    opacity: 0;
+    --cursor-scale: 0.4;
   }
 }
 
@@ -87,7 +154,7 @@
     width: 0;
   }
   to {
-    width: var(--typing-width);
+    width: var(--typing-width, 0px);
   }
 }
 
@@ -102,10 +169,29 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .typing-name {
+  .typing-name,
+  .typing-name[data-typing="ready"] {
     width: auto;
+    overflow: visible;
     border-right: 0;
     animation: none;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  body.has-custom-cursor {
+    cursor: none;
+  }
+
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea {
+    cursor: none;
   }
 }
 

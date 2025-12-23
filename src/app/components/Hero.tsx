@@ -1,6 +1,6 @@
 "use client";
 
-import type { CSSProperties } from "react";
+import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -10,6 +10,30 @@ export default function Hero() {
   const { scrollY } = useScroll();
   const textY = useTransform(scrollY, [0, 600], [0, -40]);
   const imageY = useTransform(scrollY, [0, 600], [0, 30]);
+  const nameRef = useRef<HTMLSpanElement | null>(null);
+  const [typingWidth, setTypingWidth] = useState<number | null>(null);
+
+  useLayoutEffect(() => {
+    const node = nameRef.current;
+    if (!node) return;
+
+    let isActive = true;
+
+    const updateWidth = () => {
+      if (!isActive) return;
+      setTypingWidth(node.scrollWidth);
+    };
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(updateWidth);
+    } else {
+      updateWidth();
+    }
+
+    return () => {
+      isActive = false;
+    };
+  }, []);
 
   return (
     <section
@@ -39,12 +63,14 @@ export default function Hero() {
             <span className="block text-primary">
               <span
                 className="typing-name"
+                data-typing={typingWidth ? "ready" : "waiting"}
                 style={
                   {
-                    "--typing-width": `${typedName.length}ch`,
+                    "--typing-width": typingWidth ? `${typingWidth}px` : "0px",
                     "--typing-steps": typedName.length,
                   } as CSSProperties
                 }
+                ref={nameRef}
               >
                 {typedName}
               </span>
@@ -53,8 +79,7 @@ export default function Hero() {
           <p className="mt-4 max-w-xl text-lg font-medium leading-relaxed text-base-content/80">
             Saat ini bekerja sebagai Technical Support di UBSI Kampus Solo. Saya
             terus mengembangkan kemampuan di bidang web dan UI/UX untuk
-            menghadirkan pengalaman digital yang rapi, fungsional, dan
-            manusiawi.
+            menciptakan pengalaman digital yang menyenangkan.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <motion.a

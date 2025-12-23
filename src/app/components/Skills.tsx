@@ -59,7 +59,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative snap-start scroll-mt-24 px-6 py-28 sm:py-32"
+      className="relative snap-start scroll-mt-24 px-6 py-20 sm:py-24"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <motion.div
