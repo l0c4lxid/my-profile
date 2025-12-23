@@ -84,7 +84,7 @@ export default function CustomCursor() {
     };
 
     const handleOut = (event: MouseEvent) => {
-      if (!event.relatedTarget && !event.toElement) {
+      if (!event.relatedTarget) {
         setVisibility(false);
       }
     };
