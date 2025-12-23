@@ -14,22 +14,24 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syaidandhika.my.id"),
-  title: "Syaid Andhika | Portfolio",
+  title: "Syaid Andhika | Portofolio",
   description:
-    "Colorful personal portfolio of Syaid Andhika, an Information Systems student and IT Support with a passion for modern web experiences.",
+    "Portofolio pribadi Syaid Andhika, lulusan S.Kom dan Technical Support di UBSI Kampus Solo yang terus mengembangkan kemampuan web dan UI/UX.",
   keywords: [
     "Syaid Andhika",
-    "portfolio",
-    "information systems",
-    "IT support",
-    "web developer",
+    "portofolio",
+    "lulusan S.Kom",
+    "technical support",
+    "pengembang web",
+    "UI/UX",
     "frontend",
-    "Yogyakarta",
+    "Solo",
+    "UBSI",
   ],
   openGraph: {
-    title: "Syaid Andhika | Portfolio",
+    title: "Syaid Andhika | Portofolio",
     description:
-      "Explore projects, skills, and experience from Syaid Andhika in a vibrant, modern portfolio.",
+      "Jelajahi proyek, keahlian, dan pengalaman Syaid Andhika dalam portofolio modern yang berwarna.",
     url: "https://syaidandhika.my.id",
     siteName: "Syaid Andhika",
     images: [
@@ -37,17 +39,17 @@ export const metadata: Metadata = {
         url: "/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Syaid Andhika Portfolio",
+        alt: "Portofolio Syaid Andhika",
       },
     ],
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Syaid Andhika | Portfolio",
+    title: "Syaid Andhika | Portofolio",
     description:
-      "Personal portfolio for Syaid Andhika, Information Systems student and IT Support.",
+      "Portofolio pribadi Syaid Andhika, lulusan S.Kom dan Technical Support di UBSI Kampus Solo.",
     images: ["/profile.jpg"],
   },
   robots: {
@@ -62,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="id" suppressHydrationWarning>
       <body className={`${plusJakarta.variable} antialiased`}>
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){

@@ -1,7 +1,10 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+
+const typedName = "Syaid Andhika";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -29,15 +32,29 @@ export default function Hero() {
           className="flex-1 text-center lg:text-left"
         >
           <p className="badge badge-outline badge-sm mb-4 uppercase tracking-[0.3em] text-base-content/60">
-            Creative Portfolio
+            Portofolio
           </p>
           <h1 className="text-4xl font-extrabold tracking-tight text-base-content sm:text-5xl lg:text-7xl">
-            Hi, I&apos;m <span className="text-primary">Syaid Andhika</span>
+            <span className="block">Halo, saya</span>
+            <span className="block text-primary">
+              <span
+                className="typing-name"
+                style={
+                  {
+                    "--typing-width": `${typedName.length}ch`,
+                    "--typing-steps": typedName.length,
+                  } as CSSProperties
+                }
+              >
+                {typedName}
+              </span>
+            </span>
           </h1>
-          <p className="mt-4 max-w-xl text-lg font-medium text-base-content/80">
-            Information Systems student & IT Support crafting bold web
-            experiences with a love for modern interfaces and clean
-            engineering.
+          <p className="mt-4 max-w-xl text-lg font-medium leading-relaxed text-base-content/80">
+            Saat ini bekerja sebagai Technical Support di UBSI Kampus Solo. Saya
+            terus mengembangkan kemampuan di bidang web dan UI/UX untuk
+            menghadirkan pengalaman digital yang rapi, fungsional, dan
+            manusiawi.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <motion.a
@@ -50,7 +67,7 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="btn btn-primary normal-case shadow-lg"
             >
-              View Projects
+              Lihat Proyek
             </motion.a>
             <motion.a
               href="#contact"
@@ -58,15 +75,15 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="btn btn-secondary normal-case shadow-lg"
             >
-              Contact Me
+              Hubungi Saya
             </motion.a>
           </div>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-base-content/80 lg:justify-start">
             <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
-              Web Apps
+              Aplikasi Web
             </span>
             <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
-              UX Craft
+              UI/UX
             </span>
             <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
               IT Support
@@ -95,7 +112,7 @@ export default function Hero() {
             <div className="relative z-10 h-[240px] w-[240px] overflow-hidden rounded-[32%] border border-base-300 bg-base-100 shadow-lg sm:h-[280px] sm:w-[280px]">
               <Image
                 src="/profile.jpg"
-                alt="Syaid Andhika portrait"
+                alt="Potret Syaid Andhika"
                 fill
                 sizes="(max-width: 768px) 240px, 280px"
                 className="object-cover"

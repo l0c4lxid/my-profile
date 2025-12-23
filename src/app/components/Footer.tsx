@@ -8,11 +8,11 @@ export default function Footer() {
           <span className="text-primary">Syaid Andhika</span>
         </p>
         <p className="text-sm text-base-content/60">
-          Information Systems Student • IT Support
+          Lulusan S.Kom • Technical Support UBSI Kampus Solo
         </p>
         <div className="h-px w-24 bg-base-300" />
         <p className="text-xs text-base-content/60">
-          © {currentYear} Syaid Andhika. All rights reserved.
+          © {currentYear} Syaid Andhika. Hak cipta dilindungi.
         </p>
       </div>
     </footer>

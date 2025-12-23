@@ -6,9 +6,9 @@ export default function SchemaMarkup() {
     "@type": "Person",
     name: "Syaid Andhika",
     url: "https://syaidandhika.my.id",
-    jobTitle: "Information Systems Student & IT Support",
+    jobTitle: "Technical Support UBSI Kampus Solo",
     description:
-      "Information Systems student and IT support professional passionate about technology and innovation",
+      "Lulusan S.Kom yang bekerja sebagai Technical Support di UBSI Kampus Solo dan terus belajar pengembangan web dan UI/UX.",
     sameAs: [
       "https://www.linkedin.com/in/syaid-andhika-24831b2bb/",
       "https://github.com/l0c4lxid",

@@ -11,23 +11,24 @@ import {
 
 const highlights = [
   {
-    title: "Creative Problem Solver",
-    description: "Translating complex needs into clean interfaces.",
+    title: "Pemecah Masalah Kreatif",
+    description:
+      "Menerjemahkan kebutuhan kompleks menjadi antarmuka yang jelas.",
     icon: SparklesIcon,
   },
   {
-    title: "Systems Thinker",
-    description: "Blending business logic with technical clarity.",
+    title: "Pemikir Sistem",
+    description: "Menggabungkan logika bisnis dengan kejelasan teknis.",
     icon: CommandLineIcon,
   },
   {
-    title: "People-First Support",
-    description: "Friendly IT guidance with a proactive mindset.",
+    title: "Dukungan Berorientasi Pengguna",
+    description: "Memberikan panduan TI yang ramah dan proaktif.",
     icon: UserCircleIcon,
   },
   {
-    title: "Fast Learner",
-    description: "Always experimenting with new tools and patterns.",
+    title: "Cepat Belajar",
+    description: "Terus bereksperimen dengan alat dan pola baru.",
     icon: BoltIcon,
   },
 ];
@@ -47,11 +48,11 @@ export default function About() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
-            About
+            Tentang
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            A colorful story with
-            <span className="text-primary"> tech at its core</span>
+            Cerita singkat dengan
+            <span className="text-primary"> teknologi sebagai inti</span>
           </h2>
         </motion.div>
 
@@ -79,18 +80,18 @@ export default function About() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
-                    Syaid Andhika
+                    Syaid Andhika, S.Kom
                   </p>
                   <p className="text-lg font-semibold text-base-content">
-                    Information Systems Student
+                    Technical Support UBSI Solo
                   </p>
                 </div>
               </div>
               <p className="text-base font-medium text-base-content/80">
-                I&apos;m an Information Systems student based in Yogyakarta who
-                loves blending design, technology, and business insights. I
-                focus on building smooth, human-centered digital experiences
-                while supporting teams with dependable IT solutions.
+                Technical Support di UBSI Kampus Solo yang senang menggabungkan
+                desain, teknologi, dan kebutuhan bisnis untuk menciptakan
+                pengalaman digital yang nyaman. Saat ini fokus belajar dan
+                berkembang di bidang Web Development dan UI/UX.
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
@@ -100,7 +101,7 @@ export default function About() {
                   IT Support
                 </span>
                 <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
-                  Systems Thinking
+                  Pengembangan Web
                 </span>
               </div>
               <a
@@ -108,7 +109,7 @@ export default function About() {
                 className="btn btn-primary normal-case w-fit shadow-lg"
                 download="SyaidAndhika-resume.pdf"
               >
-                Download CV
+                Unduh CV
               </a>
             </div>
           </motion.div>

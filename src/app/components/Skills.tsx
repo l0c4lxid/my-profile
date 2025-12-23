@@ -10,7 +10,7 @@ import {
 
 const skillGroups = [
   {
-    title: "Frontend",
+    title: "Front-end",
     icon: CodeBracketIcon,
     iconClass: "bg-primary/10 text-primary",
     barClass: "bg-primary",
@@ -21,7 +21,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Backend",
+    title: "Back-end",
     icon: CommandLineIcon,
     iconClass: "bg-secondary/10 text-secondary",
     barClass: "bg-secondary",
@@ -32,7 +32,7 @@ const skillGroups = [
     ],
   },
   {
-    title: "Cloud & Tools",
+    title: "Cloud & Perangkat",
     icon: CloudIcon,
     iconClass: "bg-accent/10 text-accent",
     barClass: "bg-accent",
@@ -43,14 +43,14 @@ const skillGroups = [
     ],
   },
   {
-    title: "Other Strengths",
+    title: "Kekuatan Lain",
     icon: CpuChipIcon,
     iconClass: "bg-info/10 text-info",
     barClass: "bg-info",
     skills: [
       { name: "IT Support", level: 88 },
       { name: "Data Analysis", level: 72 },
-      { name: "System Thinking", level: 80 },
+      { name: "Berpikir Sistem", level: 80 },
     ],
   },
 ];
@@ -70,10 +70,10 @@ export default function Skills() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
-            Skills
+            Keahlian
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Powered by <span className="text-primary">modern stacks</span>
+            Didukung <span className="text-primary">stack modern</span>
           </h2>
         </motion.div>
 
@@ -101,7 +101,7 @@ export default function Skills() {
                       {group.title}
                     </h3>
                     <p className="text-sm text-base-content/60">
-                      Curated strengths for real-world impact.
+                      Kekuatan yang relevan untuk kebutuhan nyata.
                     </p>
                   </div>
                 </div>

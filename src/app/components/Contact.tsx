@@ -39,13 +39,13 @@ export default function Contact() {
 
     if (!formState.name || !formState.email || !formState.message) {
       setStatus("error");
-      setStatusMessage("Please fill in all fields.");
+      setStatusMessage("Silakan isi semua kolom.");
       return;
     }
 
     if (!WEB3FORMS_ACCESS_KEY) {
       setStatus("error");
-      setStatusMessage("Form is not configured. Please try again later.");
+      setStatusMessage("Form belum dikonfigurasi. Silakan coba lagi nanti.");
       return;
     }
 
@@ -67,15 +67,15 @@ export default function Contact() {
 
       if (data.success) {
         setStatus("success");
-        setStatusMessage(data.message || "Message sent successfully!");
+        setStatusMessage(data.message || "Pesan berhasil dikirim!");
         setFormState({ name: "", email: "", message: "" });
       } else {
         setStatus("error");
-        setStatusMessage(data.message || "Failed to send message.");
+        setStatusMessage(data.message || "Gagal mengirim pesan.");
       }
     } catch {
       setStatus("error");
-      setStatusMessage("An unexpected error occurred.");
+      setStatusMessage("Terjadi kesalahan tak terduga.");
     }
   };
 
@@ -93,11 +93,11 @@ export default function Contact() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
-            Contact
+            Kontak
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Let&apos;s build something
-            <span className="text-primary"> vibrant</span>
+            Mari bangun sesuatu yang
+            <span className="text-primary"> berwarna</span>
           </h2>
         </motion.div>
 
@@ -110,10 +110,10 @@ export default function Contact() {
             className="card rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg"
           >
             <h3 className="text-lg font-semibold text-base-content">
-              Contact Details
+              Detail Kontak
             </h3>
             <p className="mt-3 text-sm font-medium text-base-content/80">
-              Reach out for collaborations, freelance work, or just to say hi.
+              Hubungi saya untuk kolaborasi, kerja lepas, atau sekadar menyapa.
             </p>
             <div className="mt-6 space-y-4 text-sm">
               <div className="flex items-center gap-3 font-medium text-base-content/80">
@@ -134,7 +134,7 @@ export default function Contact() {
                 <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                   <MapPinIcon className="h-5 w-5" />
                 </span>
-                <span>Yogyakarta, Indonesia</span>
+                <span>Solo, Indonesia</span>
               </div>
             </div>
             <div className="mt-8 flex gap-3">
@@ -165,7 +165,7 @@ export default function Contact() {
             className="card rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg"
           >
             <h3 className="text-lg font-semibold text-base-content">
-              Send a Message
+              Kirim Pesan
             </h3>
             <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-2">
@@ -173,7 +173,7 @@ export default function Contact() {
                   htmlFor="contact-name"
                   className="text-sm font-semibold text-base-content/80"
                 >
-                  Full Name
+                  Nama Lengkap
                 </label>
                 <input
                   id="contact-name"
@@ -181,7 +181,7 @@ export default function Contact() {
                   name="name"
                   value={formState.name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder="Nama Anda"
                   className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
@@ -191,7 +191,7 @@ export default function Contact() {
                   htmlFor="contact-email"
                   className="text-sm font-semibold text-base-content/80"
                 >
-                  Email Address
+                  Alamat Email
                 </label>
                 <input
                   id="contact-email"
@@ -199,7 +199,7 @@ export default function Contact() {
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
-                  placeholder="Email address"
+                  placeholder="Alamat email"
                   className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
@@ -209,14 +209,14 @@ export default function Contact() {
                   htmlFor="contact-message"
                   className="text-sm font-semibold text-base-content/80"
                 >
-                  Message
+                  Pesan
                 </label>
                 <textarea
                   id="contact-message"
                   name="message"
                   value={formState.message}
                   onChange={handleChange}
-                  placeholder="Tell me about your project"
+                  placeholder="Ceritakan proyek Anda"
                   className="textarea textarea-bordered h-32 w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
                   required
                 />
@@ -238,7 +238,9 @@ export default function Contact() {
                     }`}
                     role="status"
                   >
-                    {status === "loading" ? "Sending your message..." : statusMessage}
+                    {status === "loading"
+                      ? "Sedang mengirim pesan..."
+                      : statusMessage}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -248,12 +250,12 @@ export default function Contact() {
                 disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
                 className="btn btn-primary normal-case w-full justify-center shadow-lg"
               >
-                {status === "loading" ? "Sending..." : "Send Message"}
+                {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
                 <PaperAirplaneIcon className="ml-2 h-4 w-4" />
               </button>
               {!WEB3FORMS_ACCESS_KEY && (
                 <p className="text-xs text-error">
-                  Form is not configured. Please set
+                  Form belum dikonfigurasi. Silakan setel
                   NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.
                 </p>
               )}

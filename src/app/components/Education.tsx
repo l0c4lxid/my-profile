@@ -10,25 +10,24 @@ import {
 
 const educationItems = [
   {
-    title: "Bachelor of Information Systems",
-    institution: "Universitas Bina Sarana Informatika - Kramat 98",
+    title: "Sarjana Sistem Informasi (S1)",
+    institution: "Universitas Bina Sarana Informatika - Kampus Kramat 98",
     year: "2024 - 2025",
     description:
-      "Exploring software development, data analysis, and modern IT project management.",
+      "Lulus dengan fokus pengembangan perangkat lunak, analisis data, dan manajemen proyek TI modern.",
   },
   {
-    title: "Diploma in Information Systems",
+    title: "Diploma Sistem Informasi (D3)",
     institution: "Universitas Bina Sarana Informatika - Yogyakarta",
     year: "2021 - 2024",
     description:
-      "Focused on practical technology solutions for real business contexts.",
+      "Berfokus pada solusi teknologi praktis untuk kebutuhan bisnis.",
   },
   {
-    title: "Senior Highschool (MIPA)",
+    title: "SMA (MIPA)",
     institution: "SMA N 1 Pleret",
     year: "2018 - 2021",
-    description:
-      "Built a strong foundation in analytical thinking and problem-solving.",
+    description: "Membangun dasar berpikir analitis dan pemecahan masalah.",
   },
 ];
 
@@ -47,10 +46,10 @@ export default function Education() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
-            Education
+            Pendidikan
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Learning with <span className="text-primary">purpose</span>
+            Belajar dengan <span className="text-primary">tujuan</span>
           </h2>
         </motion.div>
 
@@ -80,9 +79,7 @@ export default function Education() {
                     <h3 className="text-lg font-semibold text-base-content">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-base-content/60">
-                      {item.year}
-                    </p>
+                    <p className="text-sm text-base-content/60">{item.year}</p>
                   </div>
                 </div>
                 <div className="mt-4 space-y-2 text-sm font-medium text-base-content/80">
@@ -96,7 +93,7 @@ export default function Education() {
                   </div>
                   <div className="flex items-center gap-2">
                     <MapPinIcon className="h-4 w-4 text-accent" />
-                    <span>Yogyakarta, Indonesia</span>
+                    <span>Indonesia</span>
                   </div>
                   <p className="pt-2">{item.description}</p>
                 </div>

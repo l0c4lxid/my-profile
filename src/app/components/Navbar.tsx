@@ -6,12 +6,12 @@ import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import { useTheme } from "./ThemeProvider";
 
 const navItems = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
-  { id: "education", label: "Education" },
-  { id: "contact", label: "Contact" },
+  { id: "home", label: "Beranda" },
+  { id: "about", label: "Tentang" },
+  { id: "skills", label: "Keahlian" },
+  { id: "projects", label: "Proyek" },
+  { id: "education", label: "Pendidikan" },
+  { id: "contact", label: "Kontak" },
 ];
 
 export default function Navbar() {
@@ -57,7 +57,7 @@ export default function Navbar() {
           type="button"
           className="text-lg font-semibold tracking-tight"
           onClick={() => handleNavClick("home")}
-          aria-label="Scroll to top"
+          aria-label="Kembali ke atas"
         >
           <span className="text-xl font-semibold text-primary">
             ./l0c4lxid
@@ -70,8 +70,8 @@ export default function Navbar() {
               type="button"
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`btn btn-ghost btn-sm normal-case relative ${
-                activeSection === item.id ? "btn-active" : ""
+              className={`btn btn-ghost btn-sm normal-case relative rounded-full transition-colors ${
+                activeSection === item.id ? "text-primary" : ""
               }`}
               aria-current={activeSection === item.id ? "page" : undefined}
             >
@@ -92,7 +92,7 @@ export default function Navbar() {
             type="button"
             onClick={toggleTheme}
             className="btn btn-ghost btn-circle border border-base-300 shadow-md"
-            aria-label="Toggle theme"
+            aria-label="Ubah tema"
           >
             <AnimatePresence mode="wait">
               <motion.span
@@ -115,7 +115,7 @@ export default function Navbar() {
             type="button"
             className="btn btn-ghost btn-circle border border-base-300 shadow-md md:hidden"
             onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Toggle menu"
+            aria-label="Buka menu"
             aria-expanded={menuOpen}
           >
             <motion.span
@@ -152,8 +152,10 @@ export default function Navbar() {
                   type="button"
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`btn btn-ghost btn-sm normal-case w-full justify-between ${
-                    activeSection === item.id ? "btn-active" : ""
+                  className={`btn btn-ghost btn-sm normal-case w-full justify-between transition-colors ${
+                    activeSection === item.id
+                      ? "bg-primary/10 text-primary"
+                      : ""
                   }`}
                 >
                   <span>{item.label}</span>

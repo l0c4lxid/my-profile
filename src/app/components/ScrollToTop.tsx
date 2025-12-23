@@ -25,7 +25,7 @@ export default function ScrollToTop() {
           className="btn btn-primary btn-circle fixed bottom-6 right-6 z-40 shadow-lg"
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Scroll to top"
+          aria-label="Kembali ke atas"
         >
           <ArrowUpIcon className="h-5 w-5" />
         </motion.button>

@@ -2,13 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowUpRightIcon,
+  CodeBracketSquareIcon,
+  GlobeAltIcon,
+} from "@heroicons/react/24/outline";
 
 const projects = [
   {
     title: "Solar System Game",
     description:
-      "Interactive learning game about the solar system with quizzes and playful UI flows.",
+      "Game pembelajaran interaktif tentang tata surya dengan kuis dan alur UI yang menyenangkan.",
     image: "/project/solar-system.JPG",
     tags: ["PHP", "Learning", "Game"],
     live: "https://ss.andhikawebsite.my.id/",
@@ -17,7 +21,7 @@ const projects = [
   {
     title: "Koperasi Sido Manunggal",
     description:
-      "Modern company profile site built to elevate a local cooperative brand.",
+      "Situs profil perusahaan modern untuk menguatkan merek koperasi lokal.",
     image: "/project/koperasi-view.JPG",
     tags: ["Next.js", "Branding", "Business"],
     live: "https://www.koperasikredit-sidomanunggal.my.id/",
@@ -26,7 +30,7 @@ const projects = [
   {
     title: "Schedule Scraper API",
     description:
-      "Node.js API to extract and serve academic schedules with clean endpoints.",
+      "API Node.js untuk mengekstrak dan menyajikan jadwal akademik dengan endpoint yang rapi.",
     image: "/project/scarp-jadwal.JPG",
     tags: ["Node.js", "API", "Automation"],
     live: "https://andhikawebsite.my.id/",
@@ -49,10 +53,10 @@ export default function Projects() {
           className="text-center"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.25em] text-base-content/60">
-            Projects
+            Proyek
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Featured <span className="text-primary">work highlights</span>
+            Sorotan <span className="text-primary">karya pilihan</span>
           </h2>
         </motion.div>
 
@@ -96,24 +100,26 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-auto flex items-center gap-3">
+                <div className="mt-auto grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn btn-primary normal-case w-full justify-center shadow-lg"
-                    aria-label={`Live demo of ${project.title}`}
+                    className="btn btn-primary normal-case w-full justify-center gap-2 shadow-lg"
+                    aria-label={`Lihat demo ${project.title}`}
                   >
-                    Live Demo
+                    <GlobeAltIcon className="h-4 w-4" />
+                    Demo
                     <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                   </a>
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="btn btn-secondary normal-case w-full justify-center shadow-lg"
-                    aria-label={`GitHub repository for ${project.title}`}
+                    className="btn btn-secondary normal-case w-full justify-center gap-2 shadow-lg"
+                    aria-label={`Repositori GitHub untuk ${project.title}`}
                   >
+                    <CodeBracketSquareIcon className="h-4 w-4" />
                     GitHub
                   </a>
                 </div>
