@@ -10,6 +10,24 @@ import {
 
 const projects = [
   {
+    title: "Desain Interior Template",
+    description:
+      "Eksplorasi landing page bisnis interior dengan layout elegan dan fokus visual.",
+    image: "/window.svg",
+    tags: ["Landing Page", "Business", "UI"],
+    live: "https://interior.syaidandhika.site/",
+    github: "https://github.com/l0c4lxid/DesainInteriorTemplate",
+  },
+  {
+    title: "Awul Awul Market",
+    description:
+      "Tampilan landing page e-commerce sederhana untuk brand market lokal.",
+    image: "/globe.svg",
+    tags: ["Landing Page", "E-Commerce", "UI"],
+    live: "https://awul.syaidandhika.site/",
+    github: "https://github.com/l0c4lxid/awul-awul-market",
+  },
+  {
     title: "Solar System Game",
     description:
       "Game pembelajaran interaktif tentang tata surya dengan kuis dan alur UI yang menyenangkan.",
