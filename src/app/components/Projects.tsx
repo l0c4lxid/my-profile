@@ -22,7 +22,7 @@ const projects = [
     github: "https://github.com/l0c4lxid/DesainInteriorTemplate",
   },
   {
-    title: "Awul Awul Market",
+    title: "Trifthing Market",
     description:
       "Tampilan landing page e-commerce sederhana untuk brand market lokal.",
     image: "/project/awul-market.jpg",
@@ -40,7 +40,7 @@ const projects = [
     github: "https://github.com/l0c4lxid",
   },
   {
-    title: "Koperasi Sido Manunggal",
+    title: "Koperasi Kredit",
     description:
       "Situs profil perusahaan modern untuk menguatkan merek koperasi lokal.",
     image: "/project/koperasi-view.JPG",
