@@ -78,7 +78,7 @@ export default function MobileAppLayout() {
         <div className="absolute -right-12 bottom-20 h-52 w-52 rounded-full bg-secondary/10 blur-3xl" />
       </div>
 
-      <div className="relative flex h-[calc(100dvh-64px-env(safe-area-inset-bottom))] flex-col px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1.25rem)]">
+      <div className="relative flex h-[calc(100dvh-64px-env(safe-area-inset-bottom)-1rem)] flex-col px-4 pb-4 pt-[calc(env(safe-area-inset-top)+1.25rem)]">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-base-content/60">
@@ -112,7 +112,7 @@ export default function MobileAppLayout() {
           </button>
         </div>
 
-        <div className="relative mt-4 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100/90 p-4 shadow-lg backdrop-blur">
+        <div className="relative mt-4 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100/90 shadow-lg backdrop-blur">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={activeId}
@@ -125,9 +125,9 @@ export default function MobileAppLayout() {
                 duration: reduceMotion ? 0 : 0.25,
                 ease: "easeOut",
               }}
-              className="absolute inset-0"
+              className="absolute inset-0 p-4"
             >
-              <div className="h-full w-full px-1 py-2">{activeView}</div>
+              <div className="h-full w-full">{activeView}</div>
             </motion.div>
           </AnimatePresence>
         </div>
