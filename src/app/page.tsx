@@ -9,8 +9,8 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollIndicator from "./components/ScrollIndicator";
 import CustomCursor from "./components/CustomCursor";
-import MobileBottomNav from "./components/MobileBottomNav";
 import { ActiveSectionProvider } from "./components/ActiveSectionProvider";
+import MobileAppLayout from "./components/mobile/MobileAppLayout";
 
 export default function Home() {
   return (
@@ -18,18 +18,22 @@ export default function Home() {
       <main className="relative min-h-screen overflow-x-hidden">
         <CustomCursor />
         <Navbar />
-        <div className="snap-y snap-mandatory">
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <Education />
-          <Contact />
-          <Footer />
+        <div className="md:hidden">
+          <MobileAppLayout />
         </div>
-        <ScrollToTop />
-        <ScrollIndicator />
-        <MobileBottomNav />
+        <div className="hidden md:block">
+          <div className="snap-y snap-mandatory">
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Education />
+            <Contact />
+            <Footer />
+          </div>
+          <ScrollToTop />
+          <ScrollIndicator />
+        </div>
       </main>
     </ActiveSectionProvider>
   );

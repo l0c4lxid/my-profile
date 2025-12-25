@@ -26,6 +26,20 @@
   }
 }
 
+@media (max-width: 768px) {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  html {
+    scroll-snap-type: none;
+    scroll-padding-top: 0;
+  }
+}
+
 @layer utilities {
   .animated-gradient {
     background-size: 200% 200%;

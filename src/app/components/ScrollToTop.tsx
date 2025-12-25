@@ -22,7 +22,7 @@ export default function ScrollToTop() {
           transition={{ duration: 0.2 }}
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="btn btn-primary btn-circle fixed bottom-[calc(64px+1.5rem+env(safe-area-inset-bottom))] right-6 z-40 shadow-lg md:bottom-6"
+          className="btn btn-primary btn-circle fixed right-6 z-40 hidden shadow-lg md:bottom-6 md:flex"
           whileHover={{ y: -4 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Kembali ke atas"

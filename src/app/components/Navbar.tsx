@@ -35,7 +35,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-4 left-0 right-0 z-50 px-4">
+    <nav className="fixed top-4 left-0 right-0 z-50 hidden px-4 md:block">
       <div className="navbar mx-auto flex max-w-6xl items-center justify-between rounded-full border border-base-300 bg-base-100 px-5 py-3 shadow-lg backdrop-blur">
         <button
           type="button"
