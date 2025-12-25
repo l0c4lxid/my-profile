@@ -93,7 +93,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative snap-start scroll-mt-24 px-6 py-20 sm:py-24"
+      className="relative snap-start scroll-mt-24 px-6 pt-20 pb-[calc(5rem+64px+env(safe-area-inset-bottom))] sm:pt-24 sm:pb-[calc(6rem+64px+env(safe-area-inset-bottom))] md:pb-24"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <motion.div
@@ -127,25 +127,31 @@ export default function Contact() {
               Hubungi saya untuk kolaborasi, kerja lepas, atau sekadar menyapa.
             </p>
             <div className="mt-6 space-y-4 text-sm">
-              <div className="flex items-center gap-3 font-medium text-base-content/80">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <EnvelopeIcon className="h-5 w-5" />
-                </span>
-                <a href="mailto:syaidxandhika@gmail.com">
-                  syaidxandhika@gmail.com
-                </a>
+              <div className="rounded-2xl border border-base-300 bg-base-200/70 p-3 md:rounded-none md:border-0 md:bg-transparent md:p-0">
+                <div className="flex items-center gap-3 font-medium text-base-content/80">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <EnvelopeIcon className="h-5 w-5" />
+                  </span>
+                  <a href="mailto:syaidxandhika@gmail.com">
+                    syaidxandhika@gmail.com
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center gap-3 font-medium text-base-content/80">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <PhoneIcon className="h-5 w-5" />
-                </span>
-                <span>+62 896 0776 5169</span>
+              <div className="rounded-2xl border border-base-300 bg-base-200/70 p-3 md:rounded-none md:border-0 md:bg-transparent md:p-0">
+                <div className="flex items-center gap-3 font-medium text-base-content/80">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <PhoneIcon className="h-5 w-5" />
+                  </span>
+                  <span>+62 896 0776 5169</span>
+                </div>
               </div>
-              <div className="flex items-center gap-3 font-medium text-base-content/80">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                  <MapPinIcon className="h-5 w-5" />
-                </span>
-                <span>Yogyakarta, Indonesia</span>
+              <div className="rounded-2xl border border-base-300 bg-base-200/70 p-3 md:rounded-none md:border-0 md:bg-transparent md:p-0">
+                <div className="flex items-center gap-3 font-medium text-base-content/80">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                    <MapPinIcon className="h-5 w-5" />
+                  </span>
+                  <span>Yogyakarta, Indonesia</span>
+                </div>
               </div>
             </div>
             <div className="mt-8 flex gap-3">
@@ -195,7 +201,7 @@ export default function Contact() {
                   value={formState.name}
                   onChange={handleChange}
                   placeholder="Nama Anda"
-                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
+                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-4 text-base text-base-content placeholder:text-base-content/60 md:py-3 md:text-sm"
                   required
                 />
               </div>
@@ -213,7 +219,7 @@ export default function Contact() {
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="Alamat email"
-                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60"
+                  className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-4 text-base text-base-content placeholder:text-base-content/60 md:py-3 md:text-sm"
                   required
                 />
               </div>
@@ -230,7 +236,7 @@ export default function Contact() {
                   value={formState.message}
                   onChange={handleChange}
                   placeholder="Ceritakan proyek Anda"
-                  className="textarea textarea-bordered h-36 w-full resize-none rounded-2xl bg-base-100 px-4 py-3 text-sm text-base-content placeholder:text-base-content/60 sm:h-40"
+                  className="textarea textarea-bordered h-40 w-full resize-none rounded-2xl bg-base-100 px-4 py-4 text-base text-base-content placeholder:text-base-content/60 md:py-3 md:text-sm"
                   required
                 />
               </div>
@@ -258,14 +264,16 @@ export default function Contact() {
                 )}
               </AnimatePresence>
 
-              <button
-                type="submit"
-                disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
-                className="btn btn-primary normal-case w-full justify-center shadow-lg"
-              >
-                {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
-                <PaperAirplaneIcon className="ml-2 h-4 w-4" />
-              </button>
+              <div className="sticky bottom-[calc(64px+env(safe-area-inset-bottom)+0.75rem)] z-10 rounded-2xl bg-base-100/90 p-2 backdrop-blur md:static md:bg-transparent md:p-0 md:backdrop-blur-0">
+                <button
+                  type="submit"
+                  disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
+                  className="btn btn-primary normal-case w-full justify-center shadow-lg"
+                >
+                  {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
+                  <PaperAirplaneIcon className="ml-2 h-4 w-4" />
+                </button>
+              </div>
               {!WEB3FORMS_ACCESS_KEY && (
                 <p className="text-xs text-error">
                   Form belum dikonfigurasi. Silakan setel

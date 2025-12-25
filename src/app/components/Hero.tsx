@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen snap-start scroll-mt-24 items-center overflow-hidden px-6 pb-24 pt-32"
+      className="relative flex min-h-screen snap-start scroll-mt-24 items-center overflow-hidden px-6 pb-[calc(6rem+64px+env(safe-area-inset-bottom))] pt-32 md:pb-24"
     >
       <div className="absolute inset-0 -z-10">
         <div className="animated-gradient absolute inset-0 bg-base-300/70" />
@@ -51,7 +51,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-base-200/30" />
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-12 lg:flex-row">
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:gap-12 lg:flex-row">
         <motion.div
           style={{ y: textY }}
           initial={{ opacity: 0, y: 30 }}
@@ -62,7 +62,7 @@ export default function Hero() {
           <p className="badge badge-outline badge-sm mb-4 uppercase tracking-[0.3em] text-base-content/60">
             Portofolio
           </p>
-          <h1 className="text-4xl font-extrabold tracking-tight text-base-content sm:text-5xl lg:text-7xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-base-content sm:text-4xl md:text-5xl lg:text-7xl">
             <span className="block">Halo, saya</span>
             <span className="block text-primary">
               <span
@@ -85,7 +85,7 @@ export default function Hero() {
             terus mengembangkan kemampuan di bidang web dan UI/UX untuk
             menciptakan pengalaman digital yang menyenangkan.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+          <div className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <motion.a
               href="#projects"
               whileHover={{
@@ -94,7 +94,7 @@ export default function Hero() {
                   "0 20px 40px color-mix(in oklch, var(--color-primary) 35%, transparent)",
               }}
               whileTap={{ scale: 0.98 }}
-              className="btn btn-primary normal-case gap-2 shadow-lg"
+              className="btn btn-primary w-full normal-case gap-2 shadow-lg sm:w-auto"
             >
               <FolderOpenIcon className="h-5 w-5" />
               Lihat Proyek
@@ -103,20 +103,20 @@ export default function Hero() {
               href="#contact"
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className="btn btn-secondary normal-case gap-2 shadow-lg"
+              className="btn btn-secondary w-full normal-case gap-2 shadow-lg sm:w-auto"
             >
               <EnvelopeIcon className="h-5 w-5" />
               Hubungi Saya
             </motion.a>
           </div>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-base-content/80 lg:justify-start">
-            <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
+          <div className="no-scrollbar mt-10 flex w-full snap-x snap-mandatory items-center gap-3 overflow-x-auto pb-2 text-sm text-base-content/80 sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none lg:justify-start">
+            <span className="badge badge-outline shrink-0 snap-start px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
               Aplikasi Web
             </span>
-            <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
+            <span className="badge badge-outline shrink-0 snap-start px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
               UI/UX
             </span>
-            <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
+            <span className="badge badge-outline shrink-0 snap-start px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
               IT Support
             </span>
           </div>
@@ -129,7 +129,8 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="relative flex-1"
         >
-          <div className="relative mx-auto flex h-[320px] w-[320px] items-center justify-center sm:h-[380px] sm:w-[380px]">
+          <div className="relative mx-auto flex h-[280px] w-[280px] items-center justify-center sm:h-[380px] sm:w-[380px]">
+            <div className="absolute inset-0 rounded-[45%] bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 blur-2xl md:hidden" />
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
@@ -140,12 +141,12 @@ export default function Hero() {
               transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
               className="absolute inset-6 rounded-[45%] border border-base-300 bg-base-100/70 backdrop-blur-xl"
             />
-            <div className="relative z-10 h-[240px] w-[240px] overflow-hidden rounded-[32%] border border-base-300 bg-base-100 shadow-lg sm:h-[280px] sm:w-[280px]">
+            <div className="relative z-10 h-[210px] w-[210px] overflow-hidden rounded-[32%] border border-base-300 bg-base-100 shadow-lg sm:h-[280px] sm:w-[280px]">
               <Image
                 src="/profile.jpg"
                 alt="Potret Syaid Andhika"
                 fill
-                sizes="(max-width: 768px) 240px, 280px"
+                sizes="(max-width: 768px) 210px, 280px"
                 className="object-cover"
                 priority
               />

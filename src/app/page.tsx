@@ -9,23 +9,28 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import ScrollIndicator from "./components/ScrollIndicator";
 import CustomCursor from "./components/CustomCursor";
+import MobileBottomNav from "./components/MobileBottomNav";
+import { ActiveSectionProvider } from "./components/ActiveSectionProvider";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
-      <CustomCursor />
-      <Navbar />
-      <div className="snap-y snap-mandatory">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Contact />
-        <Footer />
-      </div>
-      <ScrollToTop />
-      <ScrollIndicator />
-    </main>
+    <ActiveSectionProvider>
+      <main className="relative min-h-screen overflow-x-hidden">
+        <CustomCursor />
+        <Navbar />
+        <div className="snap-y snap-mandatory">
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Education />
+          <Contact />
+          <Footer />
+        </div>
+        <ScrollToTop />
+        <ScrollIndicator />
+        <MobileBottomNav />
+      </main>
+    </ActiveSectionProvider>
   );
 }

@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative snap-start px-6 pb-12 pt-8">
+    <footer className="relative snap-start px-6 pb-[calc(3rem+64px+env(safe-area-inset-bottom))] pt-8 md:pb-12">
       <div className="pointer-events-none absolute inset-x-0 top-8 -z-10 mx-auto h-36 w-[min(92vw,74rem)] rounded-[40px] bg-gradient-to-r from-primary/10 via-secondary/10 to-base-200/10 blur-3xl" />
       <div className="mx-auto w-full max-w-6xl">
         <div className="rounded-[32px] bg-gradient-to-r from-primary/20 via-secondary/10 to-primary/20 p-[1px] shadow-lg">

@@ -59,7 +59,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative snap-start scroll-mt-24 px-6 py-20 sm:py-24"
+      className="relative snap-start scroll-mt-24 px-6 pt-20 pb-[calc(5rem+64px+env(safe-area-inset-bottom))] sm:pt-24 sm:pb-[calc(6rem+64px+env(safe-area-inset-bottom))] md:pb-24"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <motion.div
@@ -107,23 +107,40 @@ export default function Skills() {
                 </div>
 
                 <div className="mt-6 space-y-4">
-                  {group.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex items-center justify-between text-sm font-medium text-base-content/80">
-                        <span>{skill.name}</span>
-                        <span>{skill.level}%</span>
+                  <div className="no-scrollbar flex gap-3 overflow-x-auto pb-2 md:hidden">
+                    {group.skills.map((skill) => (
+                      <div
+                        key={skill.name}
+                        className="shrink-0 rounded-2xl border border-base-300 bg-base-100 px-4 py-3 text-sm font-semibold text-base-content/80 shadow-sm"
+                      >
+                        <p className="text-xs uppercase tracking-[0.2em] text-base-content/50">
+                          {skill.name}
+                        </p>
+                        <p className="mt-2 text-lg text-base-content">
+                          {skill.level}%
+                        </p>
                       </div>
-                      <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-base-200">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 0.8, ease: "easeOut" }}
-                          viewport={{ once: true }}
-                          className={`h-full rounded-full ${group.barClass}`}
-                        />
+                    ))}
+                  </div>
+                  <div className="hidden space-y-4 md:block">
+                    {group.skills.map((skill) => (
+                      <div key={skill.name}>
+                        <div className="flex items-center justify-between text-sm font-medium text-base-content/80">
+                          <span>{skill.name}</span>
+                          <span>{skill.level}%</span>
+                        </div>
+                        <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-base-200">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            viewport={{ once: true }}
+                            className={`h-full rounded-full ${group.barClass}`}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );

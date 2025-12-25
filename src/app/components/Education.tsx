@@ -35,7 +35,7 @@ export default function Education() {
   return (
     <section
       id="education"
-      className="relative snap-start scroll-mt-24 px-6 py-20 sm:py-24"
+      className="relative snap-start scroll-mt-24 px-6 pt-20 pb-[calc(5rem+64px+env(safe-area-inset-bottom))] sm:pt-24 sm:pb-[calc(6rem+64px+env(safe-area-inset-bottom))] md:pb-24"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
         <motion.div
@@ -54,7 +54,7 @@ export default function Education() {
         </motion.div>
 
         <div className="relative grid gap-8">
-          <div className="absolute left-5 top-0 h-full w-1 rounded-full bg-base-300 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-5 top-0 hidden h-full w-1 rounded-full bg-base-300 md:block md:left-1/2 md:-translate-x-1/2" />
 
           {educationItems.map((item, index) => (
             <motion.div
@@ -63,14 +63,14 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className={`relative flex flex-col gap-6 md:flex-row ${
+              className={`relative flex flex-col gap-4 md:flex-row md:gap-6 ${
                 index % 2 === 0
                   ? "md:justify-start md:pr-10"
                   : "md:justify-end md:pl-10"
               }`}
             >
-              <div className="absolute left-2 top-6 h-6 w-6 rounded-full bg-primary shadow-lg md:left-1/2 md:-translate-x-1/2" />
-              <div className="card ml-10 rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg md:ml-0 md:w-[46%]">
+              <div className="absolute left-2 top-6 hidden h-6 w-6 rounded-full bg-primary shadow-lg md:block md:left-1/2 md:-translate-x-1/2" />
+              <div className="card w-full rounded-[28px] border border-base-300 bg-base-100 p-6 shadow-lg md:ml-0 md:w-[46%]">
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <AcademicCapIcon className="h-6 w-6" />

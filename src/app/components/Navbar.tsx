@@ -1,19 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MoonIcon, SunIcon } from "@heroicons/react/24/solid";
 import {
   AcademicCapIcon,
   BriefcaseIcon,
-  Bars3Icon,
   EnvelopeIcon,
   HomeIcon,
   SparklesIcon,
   UserCircleIcon,
-  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useTheme } from "./ThemeProvider";
+import { useActiveSection } from "./ActiveSectionProvider";
 
 const navItems = [
   { id: "home", label: "Beranda", icon: HomeIcon },
@@ -26,30 +24,7 @@ const navItems = [
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
-  const [activeSection, setActiveSection] = useState("home");
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px" }
-    );
-
-    navItems.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => observer.disconnect();
-  }, []);
+  const { activeSection, setActiveSection } = useActiveSection();
 
   const handleNavClick = (id: string) => {
     const element = document.getElementById(id);
@@ -57,7 +32,6 @@ export default function Navbar() {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setActiveSection(id);
-    setMenuOpen(false);
   };
 
   return (
@@ -78,28 +52,28 @@ export default function Navbar() {
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-            <button
-              type="button"
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`btn btn-ghost btn-sm normal-case relative rounded-full transition-colors ${
-                activeSection === item.id ? "text-primary" : ""
-              }`}
-              aria-current={activeSection === item.id ? "page" : undefined}
-            >
-              {activeSection === item.id && (
-                <motion.span
-                  layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-primary/20 shadow-sm"
-                  transition={{ type: "spring", stiffness: 260, damping: 22 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                <Icon className="h-4 w-4" />
-                {item.label}
-              </span>
-            </button>
-          );
+              <button
+                type="button"
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className={`btn btn-ghost btn-sm normal-case relative rounded-full transition-colors ${
+                  activeSection === item.id ? "text-primary" : ""
+                }`}
+                aria-current={activeSection === item.id ? "page" : undefined}
+              >
+                {activeSection === item.id && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-primary/20 shadow-sm"
+                    transition={{ type: "spring", stiffness: 260, damping: 22 }}
+                  />
+                )}
+                <span className="relative z-10 flex items-center gap-2">
+                  <Icon className="h-4 w-4" />
+                  {item.label}
+                </span>
+              </button>
+            );
           })}
         </div>
 
@@ -126,73 +100,8 @@ export default function Navbar() {
               </motion.span>
             </AnimatePresence>
           </button>
-
-          <button
-            type="button"
-            className="btn btn-ghost btn-circle border border-base-300 shadow-md md:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-label="Buka menu"
-            aria-expanded={menuOpen}
-          >
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={menuOpen ? "close" : "open"}
-                initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center justify-center"
-              >
-                {menuOpen ? (
-                  <XMarkIcon className="h-5 w-5" />
-                ) : (
-                  <Bars3Icon className="h-5 w-5" />
-                )}
-              </motion.span>
-            </AnimatePresence>
-          </button>
         </div>
       </div>
-
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="mx-auto mt-3 max-w-6xl rounded-3xl border border-base-300 bg-base-100 p-4 shadow-lg backdrop-blur md:hidden"
-          >
-            <div className="grid gap-2">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                <button
-                  type="button"
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={`btn btn-ghost btn-sm normal-case w-full justify-between transition-colors ${
-                    activeSection === item.id
-                      ? "bg-primary/10 text-primary"
-                      : ""
-                  }`}
-                >
-                  <span className="flex items-center gap-2">
-                    <Icon className="h-4 w-4" />
-                    {item.label}
-                  </span>
-                  <span
-                    className={`h-2.5 w-2.5 rounded-full bg-primary transition-opacity ${
-                      activeSection === item.id ? "opacity-100" : "opacity-20"
-                    }`}
-                  />
-                </button>
-              );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 }
