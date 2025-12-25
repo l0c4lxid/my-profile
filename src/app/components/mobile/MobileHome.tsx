@@ -46,7 +46,7 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
   const shouldSpin = mounted && !prefersReducedMotion;
 
   return (
-    <section className="flex h-full flex-col gap-5">
+    <section className="flex h-full min-h-0 flex-col gap-4">
       <div className="flex flex-col items-center gap-4 text-center">
         <div className="relative flex h-36 w-36 items-center justify-center">
           <div className="absolute inset-0 rounded-[38%] bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/20 blur-2xl" />

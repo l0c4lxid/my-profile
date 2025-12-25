@@ -13,11 +13,11 @@ import MobileProjects from "./MobileProjects";
 import MobileContact from "./MobileContact";
 
 const navItems: MobileNavItem[] = [
-  { id: "home", label: "Home", icon: Home },
-  { id: "about", label: "About", icon: User },
-  { id: "skills", label: "Skills", icon: Sparkles },
-  { id: "projects", label: "Projects", icon: Briefcase },
-  { id: "contact", label: "Contact", icon: Mail },
+  { id: "home", label: "Beranda", icon: Home },
+  { id: "about", label: "Tentang", icon: User },
+  { id: "skills", label: "Keahlian", icon: Sparkles },
+  { id: "projects", label: "Proyek", icon: Briefcase },
+  { id: "contact", label: "Kontak", icon: Mail },
 ];
 
 export default function MobileAppLayout() {
@@ -112,7 +112,7 @@ export default function MobileAppLayout() {
           </button>
         </div>
 
-        <div className="relative mt-4 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100/90 shadow-lg backdrop-blur">
+        <div className="relative mt-4 flex min-h-0 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100 shadow-lg">
           <AnimatePresence mode="wait" initial={false} custom={direction}>
             <motion.div
               key={activeId}
@@ -127,7 +127,7 @@ export default function MobileAppLayout() {
               }}
               className="absolute inset-0 p-4"
             >
-              <div className="h-full w-full">{activeView}</div>
+              <div className="h-full w-full min-h-0">{activeView}</div>
             </motion.div>
           </AnimatePresence>
         </div>

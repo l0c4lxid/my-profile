@@ -68,7 +68,7 @@ export default function MobileProjects() {
   };
 
   return (
-    <section className="flex h-full flex-col gap-4">
+    <section className="flex h-full min-h-0 flex-col gap-3">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-base-content/60">
@@ -90,7 +90,7 @@ export default function MobileProjects() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -24 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
-          className="flex flex-1 flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-100 shadow-lg"
+          className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-[28px] border border-base-300 bg-base-100 shadow-lg"
         >
           <div className="relative aspect-[16/10] overflow-hidden">
             <Image

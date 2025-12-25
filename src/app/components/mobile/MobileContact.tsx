@@ -92,7 +92,7 @@ export default function MobileContact() {
   };
 
   return (
-    <section className="flex h-full flex-col gap-4">
+    <section className="grid h-full min-h-0 grid-rows-[auto_auto_1fr_auto] gap-3">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-base-content/60">
           Kontak
@@ -102,41 +102,41 @@ export default function MobileContact() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-2xl border border-base-300 bg-base-100 p-3 shadow-md">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
+      <div className="grid grid-cols-2 gap-2">
+        <div className="rounded-2xl border border-base-300 bg-base-100 p-2 shadow-md">
+          <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-base-content/60">
             <EnvelopeIcon className="h-4 w-4 text-primary" />
             Email
           </div>
           <a
             href="mailto:syaidxandhika@gmail.com"
-            className="mt-2 block text-xs font-medium text-base-content/80"
+            className="mt-1 block text-[0.65rem] font-medium text-base-content/80"
           >
             syaidxandhika@gmail.com
           </a>
         </div>
-        <div className="rounded-2xl border border-base-300 bg-base-100 p-3 shadow-md">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
+        <div className="rounded-2xl border border-base-300 bg-base-100 p-2 shadow-md">
+          <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-base-content/60">
             <PhoneIcon className="h-4 w-4 text-primary" />
             Telepon
           </div>
-          <p className="mt-2 text-xs font-medium text-base-content/80">
+          <p className="mt-1 text-[0.65rem] font-medium text-base-content/80">
             +62 896 0776 5169
           </p>
         </div>
-        <div className="col-span-2 rounded-2xl border border-base-300 bg-base-100 p-3 shadow-md">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
+        <div className="col-span-2 rounded-2xl border border-base-300 bg-base-100 p-2 shadow-md">
+          <div className="flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-base-content/60">
             <MapPinIcon className="h-4 w-4 text-primary" />
             Lokasi
           </div>
-          <p className="mt-2 text-xs font-medium text-base-content/80">
+          <p className="mt-1 text-[0.65rem] font-medium text-base-content/80">
             Yogyakarta, Indonesia
           </p>
         </div>
       </div>
 
-      <form className="flex flex-1 flex-col gap-3" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-2 gap-3">
+      <form className="flex h-full min-h-0 flex-col gap-2" onSubmit={handleSubmit}>
+        <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <label className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
               Nama
@@ -147,7 +147,7 @@ export default function MobileContact() {
               value={formState.name}
               onChange={handleChange}
               placeholder="Nama Anda"
-              className="input input-bordered h-10 w-full rounded-2xl bg-base-100 px-3 text-xs text-base-content placeholder:text-base-content/50"
+              className="input input-bordered h-9 w-full rounded-2xl bg-base-100 px-3 text-xs text-base-content placeholder:text-base-content/50"
               required
             />
           </div>
@@ -161,7 +161,7 @@ export default function MobileContact() {
               value={formState.email}
               onChange={handleChange}
               placeholder="Alamat email"
-              className="input input-bordered h-10 w-full rounded-2xl bg-base-100 px-3 text-xs text-base-content placeholder:text-base-content/50"
+              className="input input-bordered h-9 w-full rounded-2xl bg-base-100 px-3 text-xs text-base-content placeholder:text-base-content/50"
               required
             />
           </div>
@@ -175,7 +175,7 @@ export default function MobileContact() {
             value={formState.message}
             onChange={handleChange}
             placeholder="Ceritakan proyek Anda"
-            className="textarea textarea-bordered h-24 w-full resize-none rounded-2xl bg-base-100 px-3 py-2 text-xs text-base-content placeholder:text-base-content/50"
+            className="textarea textarea-bordered h-20 w-full resize-none rounded-2xl bg-base-100 px-3 py-2 text-xs text-base-content placeholder:text-base-content/50"
             required
           />
         </div>
@@ -202,22 +202,24 @@ export default function MobileContact() {
           )}
         </AnimatePresence>
 
-        <button
-          type="submit"
-          disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
-          className="btn btn-primary mt-auto w-full normal-case shadow-lg"
-        >
-          {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
-          <PaperAirplaneIcon className="ml-2 h-4 w-4" />
-        </button>
-        {!WEB3FORMS_ACCESS_KEY && (
-          <p className="text-[0.65rem] text-error">
-            Form belum dikonfigurasi.
-          </p>
-        )}
+        <div className="mt-auto space-y-1">
+          <button
+            type="submit"
+            disabled={status === "loading" || !WEB3FORMS_ACCESS_KEY}
+            className="btn btn-primary w-full normal-case shadow-lg"
+          >
+            {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
+            <PaperAirplaneIcon className="ml-2 h-4 w-4" />
+          </button>
+          {!WEB3FORMS_ACCESS_KEY && (
+            <p className="text-[0.65rem] text-error">
+              Form belum dikonfigurasi.
+            </p>
+          )}
+        </div>
       </form>
 
-      <div className="flex gap-2">
+      <div className="grid grid-cols-2 gap-2">
         <a
           href="https://www.linkedin.com/in/syaid-andhika-24831b2bb/"
           target="_blank"

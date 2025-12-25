@@ -63,7 +63,7 @@ export default function MobileSkills() {
     skillGroups.find((group) => group.id === activeGroupId) || skillGroups[0];
 
   return (
-    <section className="flex h-full flex-col gap-4">
+    <section className="flex h-full min-h-0 flex-col gap-3">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-base-content/60">
           Keahlian
@@ -102,7 +102,7 @@ export default function MobileSkills() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: prefersReducedMotion ? 0 : 0.25 }}
-          className="grid flex-1 grid-cols-2 gap-3"
+          className="grid min-h-0 flex-1 grid-cols-2 gap-3"
         >
           {activeGroup.skills.map((skill) => (
             <div

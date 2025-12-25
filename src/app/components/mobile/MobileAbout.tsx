@@ -20,7 +20,7 @@ export default function MobileAbout() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="flex h-full flex-col gap-4">
+    <section className="grid h-full min-h-0 grid-rows-[auto_auto_1fr_auto] gap-3">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-base-content/60">
           Tentang
@@ -34,7 +34,7 @@ export default function MobileAbout() {
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: prefersReducedMotion ? 0 : 0.3 }}
-        className="rounded-[28px] border border-base-300 bg-base-100 p-4 shadow-lg"
+        className="rounded-[24px] border border-base-300 bg-base-100 p-3 shadow-lg"
       >
         <div className="flex items-center gap-3">
           <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-base-300 bg-base-100">
@@ -55,13 +55,13 @@ export default function MobileAbout() {
             </p>
           </div>
         </div>
-        <p className="mt-3 text-sm font-medium text-base-content/80">
+        <p className="mt-2 text-xs font-medium leading-snug text-base-content/80">
           Menggabungkan teknologi, desain, dan kebutuhan bisnis untuk menciptakan
           pengalaman digital yang nyaman dan efektif.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid h-full grid-cols-2 gap-2">
         {highlights.map((item, index) => {
           const Icon = item.icon;
           return (
@@ -73,12 +73,12 @@ export default function MobileAbout() {
                 duration: prefersReducedMotion ? 0 : 0.3,
                 delay: prefersReducedMotion ? 0 : index * 0.05,
               }}
-              className="rounded-2xl border border-base-300 bg-base-100 p-3 text-center shadow-md"
+              className="rounded-2xl border border-base-300 bg-base-100 p-2 text-center shadow-md"
             >
-              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
+              <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <Icon className="h-4 w-4" />
               </div>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/70">
+              <p className="mt-2 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-base-content/70">
                 {item.title}
               </p>
             </motion.div>
@@ -88,7 +88,7 @@ export default function MobileAbout() {
 
       <a
         href="/api/download-resume"
-        className="btn btn-primary mt-auto w-full normal-case shadow-lg"
+        className="btn btn-primary w-full normal-case shadow-lg"
         download="SyaidAndhika-resume.pdf"
       >
         Unduh CV
