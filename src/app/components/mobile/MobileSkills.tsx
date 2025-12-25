@@ -8,6 +8,12 @@ import {
   CommandLineIcon,
   CpuChipIcon,
 } from "@heroicons/react/24/outline";
+import {
+  BackendIllustration,
+  CloudIllustration,
+  FrontendIllustration,
+  StrengthIllustration,
+} from "./SkillIllustrations";
 
 const skillGroups = [
   {
@@ -15,6 +21,8 @@ const skillGroups = [
     title: "Front-end",
     icon: CodeBracketIcon,
     barClass: "bg-primary",
+    toneClass: "text-primary/45",
+    illustration: FrontendIllustration,
     skills: [
       { name: "HTML/CSS", level: 92 },
       { name: "React", level: 85 },
@@ -26,6 +34,8 @@ const skillGroups = [
     title: "Back-end",
     icon: CommandLineIcon,
     barClass: "bg-secondary",
+    toneClass: "text-secondary/45",
+    illustration: BackendIllustration,
     skills: [
       { name: "Node.js", level: 78 },
       { name: "REST APIs", level: 80 },
@@ -37,6 +47,8 @@ const skillGroups = [
     title: "Cloud",
     icon: CloudIcon,
     barClass: "bg-accent",
+    toneClass: "text-accent/45",
+    illustration: CloudIllustration,
     skills: [
       { name: "Git & CI", level: 83 },
       { name: "Docker", level: 70 },
@@ -48,6 +60,8 @@ const skillGroups = [
     title: "Lainnya",
     icon: CpuChipIcon,
     barClass: "bg-info",
+    toneClass: "text-info/45",
+    illustration: StrengthIllustration,
     skills: [
       { name: "IT Support", level: 88 },
       { name: "Analisis Data", level: 72 },
@@ -61,6 +75,7 @@ export default function MobileSkills() {
   const [activeGroupId, setActiveGroupId] = useState(skillGroups[0].id);
   const activeGroup =
     skillGroups.find((group) => group.id === activeGroupId) || skillGroups[0];
+  const ActiveIllustration = activeGroup.illustration;
 
   return (
     <section className="flex h-full min-h-0 flex-col gap-3">
@@ -107,8 +122,13 @@ export default function MobileSkills() {
           {activeGroup.skills.map((skill) => (
             <div
               key={skill.name}
-              className="rounded-2xl border border-base-300 bg-base-100 p-3 shadow-md"
+              className="relative overflow-hidden rounded-2xl border border-base-300 bg-base-100 p-3 shadow-md"
             >
+              <div
+                className={`pointer-events-none absolute right-2 top-2 ${activeGroup.toneClass}`}
+              >
+                <ActiveIllustration className="h-10 w-10 opacity-80" />
+              </div>
               <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
                 {skill.name}
               </p>
