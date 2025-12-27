@@ -85,19 +85,30 @@ export default function ChatWidgetMobile({
       document.querySelector<HTMLElement>("[data-mobile-scroll]") ?? window;
 
     const handleScroll = () => {
-      const isWindow = scrollTarget === window;
-      const scrollTop = isWindow
+      const isWindowTarget = scrollTarget === window;
+      const overflowHidden = isWindowTarget
+        ? ["hidden", "clip"].includes(
+            getComputedStyle(document.documentElement).overflowY
+          ) ||
+          ["hidden", "clip"].includes(
+            getComputedStyle(document.body).overflowY
+          )
+        : ["hidden", "clip"].includes(
+            getComputedStyle(scrollTarget as HTMLElement).overflowY
+          );
+
+      const scrollTop = isWindowTarget
         ? window.scrollY
         : (scrollTarget as HTMLElement).scrollTop;
-      const scrollHeight = isWindow
+      const scrollHeight = isWindowTarget
         ? document.documentElement.scrollHeight
         : (scrollTarget as HTMLElement).scrollHeight;
-      const clientHeight = isWindow
+      const clientHeight = isWindowTarget
         ? window.innerHeight
         : (scrollTarget as HTMLElement).clientHeight;
       const maxScroll = scrollHeight - clientHeight;
 
-      if (maxScroll <= 0) {
+      if (overflowHidden || maxScroll <= 0) {
         setShowLauncher(true);
         return;
       }
