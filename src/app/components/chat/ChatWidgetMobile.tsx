@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MessageCircle, Send, X } from "lucide-react";
+import { MessageCircle, Minus, Send, X } from "lucide-react";
 
 type ChatMessage = {
   id: string;
@@ -24,7 +24,13 @@ const initialMessage: ChatMessage = {
 const createMessageId = () =>
   `msg-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
-export default function ChatWidgetMobile() {
+type ChatWidgetMobileProps = {
+  launcherPlacement?: "viewport" | "content";
+};
+
+export default function ChatWidgetMobile({
+  launcherPlacement = "viewport",
+}: ChatWidgetMobileProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showLauncher, setShowLauncher] = useState(false);
@@ -33,6 +39,8 @@ export default function ChatWidgetMobile() {
   const [inputValue, setInputValue] = useState("");
   const [showTyping, setShowTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastPrompt, setLastPrompt] = useState<string | null>(null);
+  const [lastError, setLastError] = useState(false);
   const endRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -118,76 +126,89 @@ export default function ChatWidgetMobile() {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages.length, showTyping]);
 
+  const sendPrompt = async (prompt: string) => {
+    if (isLoading) {
+      return;
+    }
+
+    setLastPrompt(prompt);
+    setLastError(false);
+    setMessages((prev) => [
+      ...prev,
+      { id: createMessageId(), role: "user", content: prompt },
+    ]);
+
+    setIsLoading(true);
+    setShowTyping(true);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt,
+          model: MODEL_ID,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      const data = (await response.json()) as {
+        text?: string;
+      };
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: createMessageId(),
+          role: "system",
+          content:
+            data?.text?.trim() ||
+            "Maaf, aku belum bisa membalas sekarang. Coba beberapa saat lagi.",
+        },
+      ]);
+      setLastError(false);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: createMessageId(),
+          role: "system",
+          content:
+            "Sepertinya koneksi ke AI sedang bermasalah. Silakan coba lagi nanti.",
+        },
+      ]);
+      setLastError(true);
+    } finally {
+      setIsLoading(false);
+      setShowTyping(false);
+    }
+  };
+
   const handleSend = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const trimmed = inputValue.trim();
     if (!trimmed || isLoading) {
       return;
     }
-
-    setMessages((prev) => [
-      ...prev,
-      { id: createMessageId(), role: "user", content: trimmed },
-    ]);
     setInputValue("");
 
-    const runRequest = async () => {
-      setIsLoading(true);
-      setShowTyping(true);
-
-      try {
-        const response = await fetch(API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            prompt: trimmed,
-            model: MODEL_ID,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Request failed");
-        }
-
-        const data = (await response.json()) as {
-          text?: string;
-        };
-
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: createMessageId(),
-            role: "system",
-            content:
-              data?.text?.trim() ||
-              "Maaf, aku belum bisa membalas sekarang. Coba beberapa saat lagi.",
-          },
-        ]);
-      } catch {
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: createMessageId(),
-            role: "system",
-            content:
-              "Sepertinya koneksi ke AI sedang bermasalah. Silakan coba lagi nanti.",
-          },
-        ]);
-      } finally {
-        setIsLoading(false);
-        setShowTyping(false);
-      }
-    };
-
     // Future: replace with streaming AI response when available.
-    void runRequest();
+    void sendPrompt(trimmed);
   };
 
   if (!isMobile) {
     return null;
   }
+
+  const launcherClassName =
+    launcherPlacement === "content"
+      ? "absolute right-3 top-3 z-20 flex h-[54px] w-[54px] items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-100 shadow-[0_16px_28px_rgba(0,0,0,0.35)]"
+      : "fixed right-4 top-1/2 z-50 flex h-[54px] w-[54px] -translate-y-1/2 items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-100 shadow-[0_16px_28px_rgba(0,0,0,0.35)]";
 
   return (
     <div className="md:hidden">
@@ -195,18 +216,15 @@ export default function ChatWidgetMobile() {
         {isOpen ? (
           <motion.section
             key="chat-panel"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, x: 48 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 48 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="fixed left-1/2 z-50 w-[calc(100vw-24px)] max-h-[65vh] -translate-x-1/2 overflow-hidden rounded-3xl border border-slate-800/80 bg-slate-900 text-slate-100 shadow-[0_24px_40px_rgba(0,0,0,0.45)]"
-            style={{
-              bottom: "calc(72px + env(safe-area-inset-bottom))",
-            }}
+            className="fixed inset-0 z-[60] flex h-[100dvh] w-[100vw] flex-col overflow-hidden bg-slate-900 text-slate-100"
             role="dialog"
             aria-label="Mobile portfolio chat"
           >
-            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-800 px-4 py-3">
+            <div className="flex items-center justify-between border-b border-slate-800 bg-slate-800 px-4 py-3 pt-[calc(env(safe-area-inset-top)+0.5rem)]">
               <div className="flex min-w-0 items-center gap-3">
                 <div className="relative h-9 w-9 flex-none overflow-hidden rounded-full border border-slate-700">
                   <Image
@@ -227,17 +245,27 @@ export default function ChatWidgetMobile() {
                   </div>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setIsOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:text-white"
-                aria-label="Close chat"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:text-white"
+                  aria-label="Minimize chat"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition hover:text-white"
+                  aria-label="Close chat"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
             </div>
 
-            <div className="flex max-h-[65vh] flex-col">
+            <div className="flex min-h-0 flex-1 flex-col">
               <div className="flex-1 space-y-3 overflow-y-auto px-4 py-3 text-sm">
                 {messages.map((message) => {
                   const isUser = message.role === "user";
@@ -295,6 +323,19 @@ export default function ChatWidgetMobile() {
                   <Send className="h-4 w-4" />
                 </button>
               </form>
+              {lastError && lastPrompt ? (
+                <div className="flex items-center justify-end px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] text-xs text-slate-300">
+                  <button
+                    type="button"
+                    onClick={() => sendPrompt(lastPrompt)}
+                    className="rounded-full border border-slate-700 px-3 py-1.5 transition hover:border-slate-500 hover:text-white"
+                  >
+                    Coba kirim lagi
+                  </button>
+                </div>
+              ) : (
+                <div className="pb-[calc(env(safe-area-inset-bottom)+0.75rem)]" />
+              )}
             </div>
           </motion.section>
         ) : null}
@@ -313,10 +354,7 @@ export default function ChatWidgetMobile() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="fixed right-4 z-50 flex h-[54px] w-[54px] items-center justify-center rounded-full border border-slate-700 bg-slate-900 text-slate-100 shadow-[0_16px_28px_rgba(0,0,0,0.35)]"
-            style={{
-              bottom: "calc(72px + env(safe-area-inset-bottom))",
-            }}
+            className={launcherClassName}
             aria-label="Open chat"
           >
             <motion.span

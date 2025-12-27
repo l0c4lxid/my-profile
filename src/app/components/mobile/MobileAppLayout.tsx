@@ -11,6 +11,7 @@ import MobileAbout from "./MobileAbout";
 import MobileSkills from "./MobileSkills";
 import MobileProjects from "./MobileProjects";
 import MobileContact from "./MobileContact";
+import ChatWidgetMobile from "../chat/ChatWidgetMobile";
 
 const navItems: MobileNavItem[] = [
   { id: "home", label: "Beranda", icon: Home },
@@ -112,12 +113,12 @@ export default function MobileAppLayout() {
           </button>
         </div>
 
-        <div className="relative mt-4 flex min-h-0 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100 shadow-lg">
-          <AnimatePresence mode="wait" initial={false} custom={direction}>
-            <motion.div
-              key={activeId}
-              custom={direction}
-              variants={variants}
+      <div className="relative mt-4 flex min-h-0 flex-1 overflow-hidden rounded-[32px] border border-base-300 bg-base-100 shadow-lg">
+        <AnimatePresence mode="wait" initial={false} custom={direction}>
+          <motion.div
+            key={activeId}
+            custom={direction}
+            variants={variants}
               initial="enter"
               animate="center"
               exit="exit"
@@ -130,7 +131,8 @@ export default function MobileAppLayout() {
               <div className="h-full w-full min-h-0">{activeView}</div>
             </motion.div>
           </AnimatePresence>
-        </div>
+          <ChatWidgetMobile launcherPlacement="content" />
+      </div>
       </div>
 
       <MobileBottomNav
