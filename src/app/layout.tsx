@@ -5,6 +5,8 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import SchemaMarkup from "./components/SchemaMarkup";
 import { ThemeProvider } from "./components/ThemeProvider";
+import ChatWidget from "./components/chat/ChatWidget";
+import ChatWidgetMobile from "./components/chat/ChatWidgetMobile";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -82,6 +84,10 @@ export default function RootLayout({
         <ThemeProvider>
           <SchemaMarkup />
           {children}
+          <div className="hidden md:block">
+            <ChatWidget />
+          </div>
+          <ChatWidgetMobile />
           <Analytics />
         </ThemeProvider>
       </body>
