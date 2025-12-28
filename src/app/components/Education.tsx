@@ -14,7 +14,7 @@ const educationItems = [
     institution: "Universitas Bina Sarana Informatika - Kampus Kramat 98",
     year: "2024 - 2025",
     description:
-      "Lulus dengan fokus pengembangan perangkat lunak, analisis data, dan manajemen proyek TI modern.",
+      "Fokus pengembangan perangkat lunak, analisis data, dan manajemen proyek TI.",
   },
   {
     title: "Diploma Sistem Informasi (D3)",
@@ -49,7 +49,7 @@ export default function Education() {
             Pendidikan
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Belajar dengan <span className="text-primary">tujuan</span>
+            Pendidikan &amp; <span className="text-primary">sertifikasi</span>
           </h2>
         </motion.div>
 

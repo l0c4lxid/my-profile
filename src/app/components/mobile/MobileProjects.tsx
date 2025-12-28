@@ -13,41 +13,51 @@ import {
 
 const projects = [
   {
-    title: "Desain Interior",
-    description: "Landing page bisnis interior dengan layout elegan.",
+    title: "Desain Interior Template",
+    description:
+      "Landing page galeri desain interior dengan fokus visual bersih dan CTA jelas.",
     image: "/project/interior.jpg",
+    alt: "Tangkapan layar proyek Desain Interior Template - landing page galeri desain interior yang bersih dan modern",
     tags: ["Landing Page", "Business", "UI"],
     live: "https://interior.syaidandhika.site/",
     github: "https://github.com/l0c4lxid/DesainInteriorTemplate",
   },
   {
     title: "Thrifting Market",
-    description: "Tampilan landing page e-commerce untuk brand lokal.",
+    description:
+      "Landing page marketplace thrifting dengan katalog rapi dan UX mobile.",
     image: "/project/awul-market.jpg",
+    alt: "Tangkapan layar Thrifting Market - marketplace thrifting/awul-awul untuk barang preloved",
     tags: ["Landing Page", "E-Commerce", "UI"],
     live: "https://awul.syaidandhika.site/",
     github: "https://github.com/l0c4lxid/awul-awul-market",
   },
   {
     title: "Solar System Game",
-    description: "Game pembelajaran interaktif tentang tata surya.",
+    description:
+      "Game edukasi interaktif tentang tata surya dengan kuis sederhana.",
     image: "/project/solar-system.JPG",
+    alt: "Cuplikan Solar System Game - simulasi tata surya interaktif di browser",
     tags: ["PHP", "Learning", "Game"],
     live: "https://ss.andhikawebsite.my.id/",
     github: "https://github.com/l0c4lxid",
   },
   {
     title: "Koperasi Kredit",
-    description: "Situs profil perusahaan modern untuk koperasi lokal.",
+    description:
+      "Website profil koperasi dengan performa cepat dan struktur konten rapi.",
     image: "/project/koperasi-view.JPG",
+    alt: "Halaman beranda situs Koperasi Kredit - profil koperasi dan informasi layanan anggota",
     tags: ["Next.js", "Branding", "Business"],
     live: "https://www.koperasikredit-sidomanunggal.my.id/",
     github: "https://github.com/l0c4lxid/koperasi-profile-sidomanunggal",
   },
   {
-    title: "Schedule Scraper",
-    description: "API Node.js untuk jadwal akademik otomatis.",
+    title: "Schedule Scraper API",
+    description:
+      "API Node.js untuk jadwal akademik dengan endpoint terstruktur.",
     image: "/project/scarp-jadwal.JPG",
+    alt: "Tangkapan layar Schedule Scraper API - dokumentasi endpoint untuk pengambilan data jadwal",
     tags: ["Node.js", "API", "Automation"],
     live: "https://andhikawebsite.my.id/",
     github: "https://github.com/l0c4lxid",
@@ -75,7 +85,7 @@ export default function MobileProjects() {
             Proyek
           </p>
           <h2 className="mt-2 text-xl font-bold tracking-tight text-base-content">
-            Karya pilihan
+            Proyek terpilih
           </h2>
         </div>
         <div className="flex items-center gap-2 text-xs font-semibold text-base-content/60">
@@ -95,7 +105,7 @@ export default function MobileProjects() {
           <div className="relative aspect-[16/10] overflow-hidden">
             <Image
               src={project.image}
-              alt={project.title}
+              alt={project.alt}
               fill
               sizes="(max-width: 768px) 90vw, 360px"
               className="object-cover"
@@ -129,7 +139,7 @@ export default function MobileProjects() {
                 className="btn btn-primary w-full normal-case gap-2 shadow-lg"
               >
                 <GlobeAltIcon className="h-4 w-4" />
-                Demo
+                Lihat Demo
                 <ArrowUpRightIcon className="ml-2 h-4 w-4" />
               </a>
               <a
@@ -139,7 +149,7 @@ export default function MobileProjects() {
                 className="btn btn-secondary w-full normal-case gap-2 shadow-lg"
               >
                 <CodeBracketSquareIcon className="h-4 w-4" />
-                GitHub
+                Kode di GitHub
               </a>
             </div>
           </div>

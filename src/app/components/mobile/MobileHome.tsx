@@ -62,7 +62,7 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
           <div className="relative z-10 h-28 w-28 overflow-hidden rounded-[30%] border border-base-300 bg-base-100 shadow-lg">
             <Image
               src="/profile.jpg"
-              alt="Potret Syaid Andhika"
+              alt="Potret profesional Syaid Andhika - Technical Support UBSI Solo dan pengembang web/UI/UX"
               fill
               sizes="112px"
               className="object-cover"
@@ -74,8 +74,7 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
         <p className="badge badge-outline badge-sm uppercase tracking-[0.3em] text-base-content/60">
           Portofolio
         </p>
-        <h1 className="text-2xl font-extrabold tracking-tight text-base-content">
-          <span className="block">Halo, saya</span>
+        <h2 className="text-2xl font-extrabold tracking-tight text-base-content">
           <span className="block text-primary">
             <span
               className="typing-name"
@@ -91,30 +90,38 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
               {typedName}
             </span>
           </span>
-        </h1>
+          <span className="mt-1 block text-base font-semibold text-base-content/80">
+            Web Developer &amp; UI/UX
+          </span>
+        </h2>
         <p className="text-sm font-medium text-base-content/80">
-          Technical Support UBSI Kampus Solo yang fokus pada Web Development dan
-          UI/UX.
+          Technical Support UBSI Kampus Solo yang fokus pada Front-end dan UI/UX.
+        </p>
+        <p className="text-xs font-medium text-base-content/70">
+          Siap membantu UMKM dan institusi membuat antarmuka cepat dan jelas.
         </p>
       </div>
 
       <div className="mt-auto flex flex-col gap-3">
         <button
           type="button"
-          onClick={() => onNavigate("projects")}
+          onClick={() => onNavigate("contact")}
           className="btn btn-primary w-full normal-case gap-2 shadow-lg"
+        >
+          <EnvelopeIcon className="h-5 w-5" />
+          Diskusikan Proyek Anda
+        </button>
+        <button
+          type="button"
+          onClick={() => onNavigate("projects")}
+          className="btn btn-secondary w-full normal-case gap-2 shadow-lg"
         >
           <FolderOpenIcon className="h-5 w-5" />
           Lihat Proyek
         </button>
-        <button
-          type="button"
-          onClick={() => onNavigate("contact")}
-          className="btn btn-secondary w-full normal-case gap-2 shadow-lg"
-        >
-          <EnvelopeIcon className="h-5 w-5" />
-          Hubungi Saya
-        </button>
+        <p className="text-center text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
+          Gratis konsultasi 20 menit. Balasan &lt; 24 jam.
+        </p>
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/70">
           <span className="badge badge-outline px-3 py-1 text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-base-content/70">

@@ -13,7 +13,7 @@ const highlights = [
   { title: "Kreatif", icon: SparklesIcon },
   { title: "Sistemik", icon: CommandLineIcon },
   { title: "User-first", icon: UserCircleIcon },
-  { title: "Cepat Belajar", icon: BoltIcon },
+  { title: "Pembelajar Cepat", icon: BoltIcon },
 ];
 
 export default function MobileAbout() {
@@ -26,7 +26,7 @@ export default function MobileAbout() {
           Tentang
         </p>
         <h2 className="mt-2 text-xl font-bold tracking-tight text-base-content">
-          Ringkas &amp; berfokus
+          Tentang: cerita singkat
         </h2>
       </div>
 
@@ -40,7 +40,7 @@ export default function MobileAbout() {
           <div className="relative h-12 w-12 overflow-hidden rounded-2xl border border-base-300 bg-base-100">
             <Image
               src="/profile.jpg"
-              alt="Syaid Andhika"
+              alt="Foto profil Syaid Andhika, lulusan S.Kom dan spesialis web development serta UI/UX"
               fill
               sizes="48px"
               className="object-cover"
@@ -56,8 +56,8 @@ export default function MobileAbout() {
           </div>
         </div>
         <p className="mt-2 text-xs font-medium leading-snug text-base-content/80">
-          Menggabungkan teknologi, desain, dan kebutuhan bisnis untuk menciptakan
-          pengalaman digital yang nyaman dan efektif.
+          Mengutamakan problem solving, sistem rapi, dan pengalaman pengguna yang
+          jelas untuk kebutuhan bisnis.
         </p>
       </motion.div>
 

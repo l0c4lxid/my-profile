@@ -15,17 +15,19 @@ const projects = [
   {
     title: "Desain Interior Template",
     description:
-      "Eksplorasi landing page bisnis interior dengan layout elegan dan fokus visual.",
+      "Saya merancang landing page galeri desain interior dengan fokus visual bersih dan CTA jelas. Layout ringan membantu calon klien memahami layanan dengan cepat.",
     image: "/project/interior.jpg",
+    alt: "Tangkapan layar proyek Desain Interior Template - landing page galeri desain interior yang bersih dan modern",
     tags: ["Landing Page", "Business", "UI"],
     live: "https://interior.syaidandhika.site/",
     github: "https://github.com/l0c4lxid/DesainInteriorTemplate",
   },
   {
-    title: "Trifthing Market",
+    title: "Thrifting Market",
     description:
-      "Tampilan landing page e-commerce sederhana untuk brand market lokal.",
+      "Landing page marketplace thrifting/awul-awul dengan struktur katalog rapi dan CTA belanja. Fokus pada UX mobile agar produk mudah dipindai dan dipilih.",
     image: "/project/awul-market.jpg",
+    alt: "Tangkapan layar Thrifting Market - marketplace thrifting/awul-awul untuk barang preloved",
     tags: ["Landing Page", "E-Commerce", "UI"],
     live: "https://awul.syaidandhika.site/",
     github: "https://github.com/l0c4lxid/awul-awul-market",
@@ -33,8 +35,9 @@ const projects = [
   {
     title: "Solar System Game",
     description:
-      "Game pembelajaran interaktif tentang tata surya dengan kuis dan alur UI yang menyenangkan.",
+      "Game edukasi interaktif tentang tata surya dengan kuis dan alur belajar sederhana. Saya mengerjakan UI dan interaksi agar materi terasa menyenangkan.",
     image: "/project/solar-system.JPG",
+    alt: "Cuplikan Solar System Game - simulasi tata surya interaktif di browser",
     tags: ["PHP", "Learning", "Game", "Static"],
     live: "https://ss.andhikawebsite.my.id/",
     github: "https://github.com/l0c4lxid",
@@ -42,8 +45,9 @@ const projects = [
   {
     title: "Koperasi Kredit",
     description:
-      "Situs profil perusahaan modern untuk menguatkan merek koperasi lokal.",
+      "Website profil koperasi untuk memperkuat brand dan menampilkan layanan anggota. Menggunakan Next.js agar performa cepat dan struktur konten rapi.",
     image: "/project/koperasi-view.JPG",
+    alt: "Halaman beranda situs Koperasi Kredit - profil koperasi dan informasi layanan anggota",
     tags: ["Next.js", "Branding", "Business"],
     live: "https://www.koperasikredit-sidomanunggal.my.id/",
     github: "https://github.com/l0c4lxid/koperasi-profile-sidomanunggal",
@@ -51,8 +55,9 @@ const projects = [
   {
     title: "Schedule Scraper API",
     description:
-      "API Node.js untuk mengekstrak dan menyajikan jadwal akademik dengan endpoint yang rapi.",
+      "API Node.js untuk mengambil jadwal akademik dan menyajikannya dalam endpoint terstruktur. Fokus pada otomatisasi dan dokumentasi sederhana agar mudah diintegrasikan.",
     image: "/project/scarp-jadwal.JPG",
+    alt: "Tangkapan layar Schedule Scraper API - dokumentasi endpoint untuk pengambilan data jadwal",
     tags: ["Node.js", "API", "Automation"],
     live: "https://andhikawebsite.my.id/",
     github: "https://github.com/l0c4lxid",
@@ -89,7 +94,8 @@ export default function Projects() {
             Proyek
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Sorotan <span className="text-primary">karya pilihan</span>
+            Proyek terpilih:
+            <span className="text-primary"> sorotan karya</span>
           </h2>
         </motion.div>
 
@@ -107,7 +113,7 @@ export default function Projects() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt}
                     fill
                     sizes="(max-width: 768px) 90vw, 360px"
                     className="object-cover"
@@ -142,7 +148,7 @@ export default function Projects() {
                       aria-label={`Lihat demo ${project.title}`}
                     >
                       <GlobeAltIcon className="h-4 w-4" />
-                      Demo
+                      Lihat Demo
                       <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                     </a>
                     <a
@@ -150,10 +156,10 @@ export default function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn-secondary normal-case w-full justify-center gap-2 shadow-lg"
-                      aria-label={`Repositori GitHub untuk ${project.title}`}
+                      aria-label={`Kode di GitHub untuk ${project.title}`}
                     >
                       <CodeBracketSquareIcon className="h-4 w-4" />
-                      GitHub
+                      Kode di GitHub
                     </a>
                   </div>
                 </div>
@@ -177,7 +183,7 @@ export default function Projects() {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt}
                     fill
                     sizes="(max-width: 768px) 80vw, 360px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -212,7 +218,7 @@ export default function Projects() {
                       aria-label={`Lihat demo ${project.title}`}
                     >
                       <GlobeAltIcon className="h-4 w-4" />
-                      Demo
+                      Lihat Demo
                       <ArrowUpRightIcon className="ml-2 h-4 w-4" />
                     </a>
                     <a
@@ -220,10 +226,10 @@ export default function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn-secondary normal-case w-full justify-center gap-2 shadow-lg"
-                      aria-label={`Repositori GitHub untuk ${project.title}`}
+                      aria-label={`Kode di GitHub untuk ${project.title}`}
                     >
                       <CodeBracketSquareIcon className="h-4 w-4" />
-                      GitHub
+                      Kode di GitHub
                     </a>
                   </div>
                 </div>

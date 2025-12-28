@@ -63,7 +63,6 @@ export default function Hero() {
             Portofolio
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight text-base-content sm:text-4xl md:text-5xl lg:text-7xl">
-            <span className="block">Halo, saya</span>
             <span className="block text-primary">
               <span
                 className="typing-name"
@@ -79,15 +78,20 @@ export default function Hero() {
                 {typedName}
               </span>
             </span>
+            <span className="mt-2 block text-lg font-semibold text-base-content/80 sm:text-xl md:text-2xl lg:text-3xl">
+              Web Developer &amp; UI/UX
+            </span>
           </h1>
           <p className="mt-4 max-w-xl text-lg font-medium leading-relaxed text-base-content/80">
-            Saat ini bekerja sebagai Technical Support di UBSI Kampus Solo. Saya
-            terus mengembangkan kemampuan di bidang web dan UI/UX untuk
-            menciptakan pengalaman digital yang menyenangkan.
+            Technical Support di UBSI Kampus Solo yang fokus pada Front-end dan
+            UI/UX. Saya membangun antarmuka cepat, rapi, dan mudah digunakan.
+          </p>
+          <p className="mt-3 max-w-xl text-sm font-medium text-base-content/70">
+            Siap membantu UMKM dan institusi membuat antarmuka cepat dan jelas.
           </p>
           <div className="mt-8 flex w-full flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
             <motion.a
-              href="#projects"
+              href="#contact"
               whileHover={{
                 y: -4,
                 boxShadow:
@@ -96,19 +100,22 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               className="btn btn-primary w-full normal-case gap-2 shadow-lg sm:w-auto"
             >
-              <FolderOpenIcon className="h-5 w-5" />
-              Lihat Proyek
+              <EnvelopeIcon className="h-5 w-5" />
+              Diskusikan Proyek Anda
             </motion.a>
             <motion.a
-              href="#contact"
+              href="#projects"
               whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
               className="btn btn-secondary w-full normal-case gap-2 shadow-lg sm:w-auto"
             >
-              <EnvelopeIcon className="h-5 w-5" />
-              Hubungi Saya
+              <FolderOpenIcon className="h-5 w-5" />
+              Lihat Proyek
             </motion.a>
           </div>
+          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
+            Gratis konsultasi 20 menit. Balasan &lt; 24 jam.
+          </p>
           <div className="no-scrollbar mt-10 flex w-full snap-x snap-mandatory items-center gap-3 overflow-x-auto pb-2 text-sm text-base-content/80 sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none lg:justify-start">
             <span className="badge badge-outline shrink-0 snap-start px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
               Aplikasi Web
@@ -144,7 +151,7 @@ export default function Hero() {
             <div className="relative z-10 h-[210px] w-[210px] overflow-hidden rounded-[32%] border border-base-300 bg-base-100 shadow-lg sm:h-[280px] sm:w-[280px]">
               <Image
                 src="/profile.jpg"
-                alt="Potret Syaid Andhika"
+                alt="Potret profesional Syaid Andhika - Technical Support UBSI Solo dan pengembang web/UI/UX"
                 fill
                 sizes="(max-width: 768px) 210px, 280px"
                 className="object-cover"

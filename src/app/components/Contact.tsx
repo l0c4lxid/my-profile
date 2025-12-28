@@ -30,12 +30,15 @@ export default function Contact() {
     name: "",
     email: "",
     message: "",
+    goal: "",
   });
   const [status, setStatus] = useState<Status>("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -48,7 +51,12 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formState.name || !formState.email || !formState.message) {
+    if (
+      !formState.name ||
+      !formState.email ||
+      !formState.message ||
+      !formState.goal
+    ) {
       setStatus("error");
       setStatusMessage("Silakan isi semua kolom.");
       return;
@@ -67,6 +75,7 @@ export default function Contact() {
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("name", formState.name);
     formData.append("email", formState.email);
+    formData.append("goal", formState.goal);
     formData.append("message", formState.message);
 
     try {
@@ -79,7 +88,7 @@ export default function Contact() {
       if (data.success) {
         setStatus("success");
         setStatusMessage(data.message || "Pesan berhasil dikirim!");
-        setFormState({ name: "", email: "", message: "" });
+        setFormState({ name: "", email: "", message: "", goal: "" });
       } else {
         setStatus("error");
         setStatusMessage(data.message || "Gagal mengirim pesan.");
@@ -107,9 +116,13 @@ export default function Contact() {
             Kontak
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Mari bangun sesuatu yang
+            Kontak: mari bangun sesuatu yang
             <span className="text-primary"> berwarna</span>
           </h2>
+          <p className="mt-3 text-sm font-medium text-base-content/70">
+            Diskusikan kebutuhan proyek Anda. Gratis konsultasi 20 menit,
+            balasan kurang dari 24 jam.
+          </p>
         </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-[1.1fr_1.4fr]">
@@ -125,6 +138,7 @@ export default function Contact() {
             </h3>
             <p className="mt-3 text-sm font-medium text-base-content/80">
               Hubungi saya untuk kolaborasi, kerja lepas, atau sekadar menyapa.
+              Saya membalas dalam 24 jam.
             </p>
             <div className="mt-6 space-y-4 text-sm">
               <div className="rounded-2xl border border-base-300 bg-base-200/70 p-3 md:rounded-none md:border-0 md:bg-transparent md:p-0">
@@ -150,7 +164,7 @@ export default function Contact() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <MapPinIcon className="h-5 w-5" />
                   </span>
-                  <span>Yogyakarta, Indonesia</span>
+                  <span>Solo, Indonesia</span>
                 </div>
               </div>
             </div>
@@ -174,6 +188,9 @@ export default function Contact() {
                 GitHub
               </a>
             </div>
+            <p className="mt-6 text-sm font-medium text-base-content/70">
+              Butuh landing page cepat (1-2 minggu)? Hubungi saya sekarang.
+            </p>
           </motion.div>
 
           <motion.div
@@ -222,6 +239,39 @@ export default function Contact() {
                   className="input input-bordered w-full rounded-2xl bg-base-100 px-4 py-4 text-base text-base-content placeholder:text-base-content/60 md:py-3 md:text-sm"
                   required
                 />
+              </div>
+              <div className="space-y-2">
+                <label
+                  htmlFor="contact-goal"
+                  className="text-sm font-semibold text-base-content/80"
+                >
+                  Pilih Tujuan
+                </label>
+                <select
+                  id="contact-goal"
+                  name="goal"
+                  value={formState.goal}
+                  onChange={handleChange}
+                  className="select select-bordered w-full rounded-2xl bg-base-100 px-4 py-4 text-base text-base-content md:py-3 md:text-sm"
+                  required
+                >
+                  <option value="" disabled>
+                    Pilih tujuan pesan
+                  </option>
+                  <option value="Landing page/website">
+                    Landing page/website
+                  </option>
+                  <option value="UI/UX audit atau desain">
+                    UI/UX audit atau desain
+                  </option>
+                  <option value="Integrasi API atau backend">
+                    Integrasi API atau backend
+                  </option>
+                  <option value="Kolaborasi atau peluang kerja">
+                    Kolaborasi atau peluang kerja
+                  </option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
               </div>
               <div className="space-y-2">
                 <label

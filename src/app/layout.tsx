@@ -15,24 +15,23 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://syaidandhika.my.id"),
-  title: "Syaid Andhika | Portofolio",
+  title: "Syaid Andhika - Web Developer & UI/UX | Portofolio",
   description:
-    "Portofolio pribadi Syaid Andhika, lulusan S.Kom dan Technical Support di UBSI Kampus Solo yang terus mengembangkan kemampuan web dan UI/UX.",
+    "Portofolio Syaid Andhika, S.Kom - Technical Support UBSI Solo fokus Web Development & UI/UX. Jelajahi proyek dan keahlian, hubungi untuk kolaborasi.",
   keywords: [
     "Syaid Andhika",
-    "portofolio",
-    "lulusan S.Kom",
-    "technical support",
-    "pengembang web",
-    "UI/UX",
-    "frontend",
-    "Solo",
-    "UBSI",
+    "Web Developer Solo",
+    "UI/UX Designer",
+    "Technical Support UBSI",
+    "Portofolio",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Syaid Andhika | Portofolio",
+    title: "Syaid Andhika | Web & UI/UX Developer + Technical Support",
     description:
-      "Jelajahi proyek, keahlian, dan pengalaman Syaid Andhika dalam portofolio modern yang berwarna.",
+      "Portofolio Syaid Andhika, S.Kom - Technical Support UBSI Solo fokus Web Development & UI/UX. Jelajahi proyek dan keahlian, hubungi untuk kolaborasi.",
     url: "https://syaidandhika.my.id",
     siteName: "Syaid Andhika",
     images: [
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
         url: "/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Portofolio Syaid Andhika",
+        alt: "Potret profesional Syaid Andhika - Technical Support UBSI Solo dan pengembang web/UI/UX",
       },
     ],
     locale: "id_ID",
@@ -48,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Syaid Andhika | Portofolio",
+    title: "Bangun pengalaman web yang berwarna - Syaid Andhika",
     description:
-      "Portofolio pribadi Syaid Andhika, lulusan S.Kom dan Technical Support di UBSI Kampus Solo.",
+      "Technical Support UBSI Solo fokus Web Development & UI/UX. Jelajahi proyek dan keahlian untuk kolaborasi.",
     images: ["/profile.jpg"],
   },
   robots: {

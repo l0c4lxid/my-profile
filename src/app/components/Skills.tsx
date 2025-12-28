@@ -10,10 +10,16 @@ import {
 
 const skillGroups = [
   {
-    title: "Front-end",
+    title: "Front-end (HTML, CSS, React, Next.js)",
     icon: CodeBracketIcon,
     iconClass: "bg-primary/10 text-primary",
     barClass: "bg-primary",
+    summary:
+      "Membangun antarmuka cepat, responsif, dan aksesibel untuk landing page serta dashboard.",
+    examples: [
+      "Next.js untuk halaman profil Koperasi Kredit dengan performa cepat.",
+      "React untuk interaksi UI pada Solar System Game.",
+    ],
     skills: [
       { name: "HTML/CSS", level: 92 },
       { name: "React", level: 85 },
@@ -21,10 +27,16 @@ const skillGroups = [
     ],
   },
   {
-    title: "Back-end",
+    title: "Back-end (Node.js, REST API, Database Design)",
     icon: CommandLineIcon,
     iconClass: "bg-secondary/10 text-secondary",
     barClass: "bg-secondary",
+    summary:
+      "Menyusun API sederhana dan integrasi data yang rapi untuk kebutuhan internal.",
+    examples: [
+      "Node.js untuk Schedule Scraper API dan endpoint terstruktur.",
+      "Perancangan database ringan untuk prototipe aplikasi koperasi.",
+    ],
     skills: [
       { name: "Node.js", level: 78 },
       { name: "REST APIs", level: 80 },
@@ -32,10 +44,16 @@ const skillGroups = [
     ],
   },
   {
-    title: "Cloud & Perangkat",
+    title: "Cloud & CI (Git, Docker, Vercel)",
     icon: CloudIcon,
     iconClass: "bg-accent/10 text-accent",
     barClass: "bg-accent",
+    summary:
+      "Menjaga kolaborasi dan rilis melalui workflow Git yang rapi.",
+    examples: [
+      "GitHub flow untuk kolaborasi proyek portofolio.",
+      "Deploy demo ke Vercel dan hosting shared.",
+    ],
     skills: [
       { name: "Git & CI", level: 83 },
       { name: "Docker", level: 70 },
@@ -43,13 +61,19 @@ const skillGroups = [
     ],
   },
   {
-    title: "Kekuatan Lain",
+    title: "Kekuatan Lain (IT Support, Analisis, Sistem)",
     icon: CpuChipIcon,
     iconClass: "bg-info/10 text-info",
     barClass: "bg-info",
+    summary:
+      "Menggabungkan dukungan teknis dan komunikasi agar solusi tepat guna.",
+    examples: [
+      "Pendampingan pengguna dan troubleshooting harian.",
+      "Menerjemahkan kebutuhan menjadi backlog dan dokumentasi.",
+    ],
     skills: [
       { name: "IT Support", level: 88 },
-      { name: "Data Analysis", level: 72 },
+      { name: "Analisis Data", level: 72 },
       { name: "Berpikir Sistem", level: 80 },
     ],
   },
@@ -73,7 +97,8 @@ export default function Skills() {
             Keahlian
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Didukung <span className="text-primary">stack modern</span>
+            Keahlian &amp; Teknologi:
+            <span className="text-primary"> didukung stack modern</span>
           </h2>
         </motion.div>
 
@@ -106,7 +131,19 @@ export default function Skills() {
                   </div>
                 </div>
 
-                <div className="mt-6 space-y-4">
+                <div className="mt-4 space-y-3 text-sm font-medium text-base-content/80">
+                  <p>{group.summary}</p>
+                  <ul className="space-y-1 text-sm text-base-content/70">
+                    {group.examples.map((example) => (
+                      <li key={example} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-base-content/50" />
+                        <span>{example}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-5 space-y-4">
                   <div className="no-scrollbar flex gap-3 overflow-x-auto pb-2 md:hidden">
                     {group.skills.map((skill) => (
                       <div

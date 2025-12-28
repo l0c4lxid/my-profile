@@ -31,12 +31,15 @@ export default function MobileContact() {
     name: "",
     email: "",
     message: "",
+    goal: "",
   });
   const [status, setStatus] = useState<Status>("idle");
   const [statusMessage, setStatusMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormState((prev) => ({ ...prev, [name]: value }));
@@ -49,7 +52,12 @@ export default function MobileContact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formState.name || !formState.email || !formState.message) {
+    if (
+      !formState.name ||
+      !formState.email ||
+      !formState.message ||
+      !formState.goal
+    ) {
       setStatus("error");
       setStatusMessage("Silakan isi semua kolom.");
       return;
@@ -68,6 +76,7 @@ export default function MobileContact() {
     formData.append("access_key", WEB3FORMS_ACCESS_KEY);
     formData.append("name", formState.name);
     formData.append("email", formState.email);
+    formData.append("goal", formState.goal);
     formData.append("message", formState.message);
 
     try {
@@ -80,7 +89,7 @@ export default function MobileContact() {
       if (data.success) {
         setStatus("success");
         setStatusMessage(data.message || "Pesan berhasil dikirim!");
-        setFormState({ name: "", email: "", message: "" });
+        setFormState({ name: "", email: "", message: "", goal: "" });
       } else {
         setStatus("error");
         setStatusMessage(data.message || "Gagal mengirim pesan.");
@@ -98,8 +107,11 @@ export default function MobileContact() {
           Kontak
         </p>
         <h2 className="mt-2 text-xl font-bold tracking-tight text-base-content">
-          Mari terhubung
+          Kontak: mari terhubung
         </h2>
+        <p className="mt-2 text-[0.65rem] font-medium text-base-content/70">
+          Gratis konsultasi 20 menit, balasan kurang dari 24 jam.
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-2">
@@ -130,12 +142,15 @@ export default function MobileContact() {
             Lokasi
           </div>
           <p className="mt-1 text-[0.65rem] font-medium text-base-content/80">
-            Yogyakarta, Indonesia
+            Solo, Indonesia
           </p>
         </div>
       </div>
 
-      <form className="flex h-full min-h-0 flex-col gap-2" onSubmit={handleSubmit}>
+      <form
+        className="flex h-full min-h-0 flex-col gap-2"
+        onSubmit={handleSubmit}
+      >
         <div className="grid grid-cols-2 gap-2">
           <div className="space-y-1">
             <label className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
@@ -165,6 +180,33 @@ export default function MobileContact() {
               required
             />
           </div>
+        </div>
+        <div className="space-y-1">
+          <label className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
+            Tujuan
+          </label>
+          <select
+            name="goal"
+            value={formState.goal}
+            onChange={handleChange}
+            className="select select-bordered h-9 w-full rounded-2xl bg-base-100 px-3 text-xs text-base-content"
+            required
+          >
+            <option value="" disabled>
+              Pilih tujuan pesan
+            </option>
+            <option value="Landing page/website">Landing page/website</option>
+            <option value="UI/UX audit atau desain">
+              UI/UX audit atau desain
+            </option>
+            <option value="Integrasi API atau backend">
+              Integrasi API atau backend
+            </option>
+            <option value="Kolaborasi atau peluang kerja">
+              Kolaborasi atau peluang kerja
+            </option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
         </div>
         <div className="space-y-1">
           <label className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
@@ -211,6 +253,9 @@ export default function MobileContact() {
             {status === "loading" ? "Mengirim..." : "Kirim Pesan"}
             <PaperAirplaneIcon className="ml-2 h-4 w-4" />
           </button>
+          <p className="text-[0.6rem] font-medium text-base-content/70">
+            Butuh landing page cepat (1-2 minggu)? Hubungi saya.
+          </p>
           {!WEB3FORMS_ACCESS_KEY && (
             <p className="text-[0.65rem] text-error">
               Form belum dikonfigurasi.

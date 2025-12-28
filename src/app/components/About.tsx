@@ -27,7 +27,7 @@ const highlights = [
     icon: UserCircleIcon,
   },
   {
-    title: "Cepat Belajar",
+    title: "Pembelajar Cepat",
     description: "Terus bereksperimen dengan alat dan pola baru.",
     icon: BoltIcon,
   },
@@ -51,7 +51,7 @@ export default function About() {
             Tentang
           </p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-base-content md:text-4xl lg:text-5xl">
-            Cerita singkat dengan
+            Tentang: cerita singkat dengan
             <span className="text-primary"> teknologi sebagai inti</span>
           </h2>
         </motion.div>
@@ -71,7 +71,7 @@ export default function About() {
                   <div className="relative h-20 w-20 overflow-hidden rounded-[14px] bg-base-100">
                     <Image
                       src="/profile.jpg"
-                      alt="Syaid Andhika"
+                      alt="Foto profil Syaid Andhika, lulusan S.Kom dan spesialis web development serta UI/UX"
                       fill
                       sizes="80px"
                       className="object-cover"
@@ -87,12 +87,17 @@ export default function About() {
                   </p>
                 </div>
               </div>
-              <p className="text-base font-medium text-base-content/80">
-                Technical Support di UBSI Kampus Solo yang senang menggabungkan
-                desain, teknologi, dan kebutuhan bisnis untuk menciptakan
-                pengalaman digital yang nyaman. Saat ini fokus belajar dan
-                berkembang di bidang Web Development dan UI/UX.
-              </p>
+              <div className="space-y-3 text-base font-medium text-base-content/80">
+                <p>
+                  Saya mengutamakan problem solving, sistem yang rapi, dan
+                  pengalaman pengguna yang jelas dalam setiap proyek.
+                </p>
+                <p>
+                  Saat ini fokus pada Web Development dan UI/UX dengan minat
+                  pada landing page, dashboard, dan pengalaman digital yang
+                  mudah digunakan.
+                </p>
+              </div>
               <div className="flex flex-wrap gap-3">
                 <span className="badge badge-outline px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">
                   UI/UX
