@@ -42,7 +42,7 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-screen snap-start scroll-mt-24 items-center overflow-hidden px-6 pb-[calc(6rem+64px+env(safe-area-inset-bottom))] pt-32 md:pb-24"
     >
-      <div className="absolute inset-0 -z-10">
+      <div className="pointer-events-none absolute inset-0 z-0">
         <div className="animated-gradient absolute inset-0 bg-base-300/70" />
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl animate-float-slow" />
         <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-secondary/15 blur-3xl animate-pulse-soft" />
@@ -56,7 +56,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:gap-12 lg:flex-row">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:gap-12 lg:flex-row">
         <motion.div
           style={{ y: textY }}
           initial={{ opacity: 0, y: 30 }}
