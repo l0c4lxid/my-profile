@@ -120,8 +120,8 @@ export default function Contact() {
             <span className="text-primary"> berwarna</span>
           </h2>
           <p className="mt-3 text-sm font-medium text-base-content/70">
-            Diskusikan kebutuhan proyek Anda. Gratis konsultasi 20 menit,
-            balasan kurang dari 24 jam.
+            Diskusikan kebutuhan proyek Anda. Gratis konsultasi, balasan kurang
+            dari 24 jam.
           </p>
         </motion.div>
 
@@ -164,7 +164,7 @@ export default function Contact() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
                     <MapPinIcon className="h-5 w-5" />
                   </span>
-                  <span>Solo, Indonesia</span>
+                  <span>Yogyakarta, Indonesia</span>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function Contact() {
               </a>
             </div>
             <p className="mt-6 text-sm font-medium text-base-content/70">
-              Butuh landing page cepat (1-2 minggu)? Hubungi saya sekarang.
+              Butuh landing page cepat (1-2 hari)? Hubungi saya sekarang.
             </p>
           </motion.div>
 

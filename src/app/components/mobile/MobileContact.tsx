@@ -110,7 +110,7 @@ export default function MobileContact() {
           Kontak: mari terhubung
         </h2>
         <p className="mt-2 text-[0.65rem] font-medium text-base-content/70">
-          Gratis konsultasi 20 menit, balasan kurang dari 24 jam.
+          Gratis konsultasi, balasan kurang dari 24 jam.
         </p>
       </div>
 
@@ -142,7 +142,7 @@ export default function MobileContact() {
             Lokasi
           </div>
           <p className="mt-1 text-[0.65rem] font-medium text-base-content/80">
-            Solo, Indonesia
+            Yogyakarta, Indonesia
           </p>
         </div>
       </div>
@@ -254,7 +254,7 @@ export default function MobileContact() {
             <PaperAirplaneIcon className="ml-2 h-4 w-4" />
           </button>
           <p className="text-[0.6rem] font-medium text-base-content/70">
-            Butuh landing page cepat (1-2 minggu)? Hubungi saya.
+            Butuh landing page cepat (1-2 hari)? Hubungi saya.
           </p>
           {!WEB3FORMS_ACCESS_KEY && (
             <p className="text-[0.65rem] text-error">

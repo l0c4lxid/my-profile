@@ -3,10 +3,8 @@
 import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  EnvelopeIcon,
-  FolderOpenIcon,
-} from "@heroicons/react/24/outline";
+import { EnvelopeIcon, FolderOpenIcon } from "@heroicons/react/24/outline";
+import Aurora from "./Aurora";
 
 const typedName = "Syaid Andhika";
 
@@ -49,6 +47,13 @@ export default function Hero() {
         <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl animate-float-slow" />
         <div className="absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-secondary/15 blur-3xl animate-pulse-soft" />
         <div className="absolute inset-0 bg-base-200/30" />
+        <Aurora
+          className="hidden md:block"
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.9}
+          amplitude={1.6}
+          speed={0.7}
+        />
       </div>
 
       <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-10 md:gap-12 lg:flex-row">
@@ -114,7 +119,7 @@ export default function Hero() {
             </motion.a>
           </div>
           <p className="mt-3 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/60">
-            Gratis konsultasi 20 menit. Balasan &lt; 24 jam.
+            Gratis konsultasi. Balasan &lt; 24 jam.
           </p>
           <div className="no-scrollbar mt-10 flex w-full snap-x snap-mandatory items-center gap-3 overflow-x-auto pb-2 text-sm text-base-content/80 sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none lg:justify-start">
             <span className="badge badge-outline shrink-0 snap-start px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-base-content/80">

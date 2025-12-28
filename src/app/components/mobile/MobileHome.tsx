@@ -1,6 +1,12 @@
 "use client";
 
-import { type CSSProperties, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { EnvelopeIcon, FolderOpenIcon } from "@heroicons/react/24/outline";
@@ -95,7 +101,8 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
           </span>
         </h2>
         <p className="text-sm font-medium text-base-content/80">
-          Technical Support UBSI Kampus Solo yang fokus pada Front-end dan UI/UX.
+          Technical Support UBSI Kampus Solo yang fokus pada Front-end dan
+          UI/UX.
         </p>
         <p className="text-xs font-medium text-base-content/70">
           Siap membantu UMKM dan institusi membuat antarmuka cepat dan jelas.
@@ -120,7 +127,7 @@ export default function MobileHome({ onNavigate }: MobileHomeProps) {
           Lihat Proyek
         </button>
         <p className="text-center text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-base-content/60">
-          Gratis konsultasi 20 menit. Balasan &lt; 24 jam.
+          Gratis konsultasi. Balasan &lt; 24 jam.
         </p>
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-base-content/70">
